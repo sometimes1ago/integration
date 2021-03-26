@@ -258,6 +258,8 @@
             // SortEvtOpt
             // 
             this.SortEvtOpt.FormattingEnabled = true;
+            this.SortEvtOpt.Items.AddRange(new object[] {
+            "Месту"});
             this.SortEvtOpt.Location = new System.Drawing.Point(110, 26);
             this.SortEvtOpt.Name = "SortEvtOpt";
             this.SortEvtOpt.Size = new System.Drawing.Size(129, 21);
@@ -387,10 +389,14 @@
             this.ShowSortedSpButton.TabIndex = 9;
             this.ShowSortedSpButton.Text = "Показать";
             this.ShowSortedSpButton.UseVisualStyleBackColor = true;
+            this.ShowSortedSpButton.Click += new System.EventHandler(this.ShowSortedSpButton_Click);
             // 
             // OrderSpByOpt
             // 
             this.OrderSpByOpt.FormattingEnabled = true;
+            this.OrderSpByOpt.Items.AddRange(new object[] {
+            "Возрастанию",
+            "Убыванию"});
             this.OrderSpByOpt.Location = new System.Drawing.Point(105, 66);
             this.OrderSpByOpt.Name = "OrderSpByOpt";
             this.OrderSpByOpt.Size = new System.Drawing.Size(129, 21);
@@ -408,6 +414,12 @@
             // SortSpByOpt
             // 
             this.SortSpByOpt.FormattingEnabled = true;
+            this.SortSpByOpt.Items.AddRange(new object[] {
+            "Фамилии",
+            "Гражданству",
+            "Росту",
+            "Весу",
+            "Команде"});
             this.SortSpByOpt.Location = new System.Drawing.Point(105, 26);
             this.SortSpByOpt.Name = "SortSpByOpt";
             this.SortSpByOpt.Size = new System.Drawing.Size(129, 21);
@@ -456,6 +468,7 @@
             this.MaximizeBox = false;
             this.Name = "Welcome";
             this.Text = "Добро пожаловать";
+            this.Load += new System.EventHandler(this.Welcome_Load);
             this.GuestControls.ResumeLayout(false);
             this.Events.ResumeLayout(false);
             this.DirectSearchGroup.ResumeLayout(false);

@@ -33,6 +33,26 @@ namespace IntegrationApp
         }
 
         /// <summary>
+        /// Метод, получающий порядок сортировки при выполнении запроса
+        /// </summary>
+        /// <param name="SelectedItem">Выбранный элемент комбобокса</param>
+        /// <returns></returns>
+        public static string GetOrderParameter(string SelectedItem)
+        {
+            switch (SelectedItem)
+            {
+                case "Возрастанию":
+                    SelectedItem = "DESC";
+                    break;
+                case "Убыванию":
+                    SelectedItem = "ASC";
+                    break;
+            }
+
+            return SelectedItem;
+        }
+
+        /// <summary>
         /// Метод устанвливающий какой именно пользователь авторизовался
         /// </summary>
         /// <param name="UserLogin">Логин пользователя</param>
