@@ -19,55 +19,43 @@ namespace IntegrationApp
 
         private void ToAuthLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Auth auth = new Auth();
+            Auth auth = new Auth(this);
             Hide();
             auth.Show();
         }
 
 
-        /// <summary>
-        /// Метод, получающий сортировочный параметр у спортсменов
-        /// </summary>
-        /// <param name="SelectedItem">Выбранный элемент комбобокса</param>
-        /// <returns></returns>
-        private string GetSortByParameter(string SelectedItem)
-        {
-            switch (SelectedItem)
-            {
-                case "Фамилии":
-                    SelectedItem = "Фамилия";
-                    break;
-                case "Гражданству":
-                    SelectedItem = "Гражданство";
-                    break;
-                case "Росту":
-                    SelectedItem = "Рост_см";
-                    break;
-                case "Весу":
-                    SelectedItem = "Вес_кг";
-                    break;
-                case "Команде":
-                    SelectedItem = "Команда";
-                    break;
-            }
-
-            return SelectedItem;
-        }
-
         private void Welcome_Load(object sender, EventArgs e)
         {
+            //Установка значений по умолчанию
             SortSpByOpt.SelectedItem = "Фамилии";
             OrderSpByOpt.SelectedItem = "Убыванию";
-            string GetSportsmenData = "select * from GetSportsmanData order by " + GetSortByParameter(SortSpByOpt.SelectedItem.ToString())  +
-                " " + Service.GetOrderParameter(OrderSpByOpt.SelectedItem.ToString());
-            SpData.DataSource = DB.SearchValuesQuery(GetSportsmenData);
+            SortEvtOpt.SelectedItem = "Названию";
+            OrderEvtOpt.SelectedItem = "Убыванию";
+
+            //Получение данных
+            NearestEventsData.DataSource = Data.GetEvtData(SortEvtOpt.SelectedItem.ToString(), OrderEvtOpt.SelectedItem.ToString());
+            SpData.DataSource = Data.GetSpData(SortSpByOpt.SelectedItem.ToString(), OrderSpByOpt.SelectedItem.ToString());
         }
 
         private void ShowSortedSpButton_Click(object sender, EventArgs e)
         {
-            string GetSportsmenData = "select * from GetSportsmanData order by " + GetSortByParameter(SortSpByOpt.SelectedItem.ToString()) +
-                " " + Service.GetOrderParameter(OrderSpByOpt.SelectedItem.ToString());
-            SpData.DataSource = DB.SearchValuesQuery(GetSportsmenData);
+            SpData.DataSource = Data.GetSpData(SortSpByOpt.SelectedItem.ToString(), OrderSpByOpt.SelectedItem.ToString());
+        }
+
+        private void ShowEventsButton_Click(object sender, EventArgs e)
+        {
+            NearestEventsData.DataSource = Data.GetEvtData(SortEvtOpt.SelectedItem.ToString(), OrderEvtOpt.SelectedItem.ToString());
+        }
+
+        private void DirectSearchButton_Click(object sender, EventArgs e)
+        {
+            NearestEventsData.DataSource = Data.DirectEvtDataSearch(SearchByOpt.SelectedItem.ToString(), DirectSearchInput.Text);
+        }
+
+        private void DirectSpSearchButton_Click(object sender, EventArgs e)
+        {
+            SpData.DataSource = Data.DirectSpDataSearch(DirectSpSearchOpt.SelectedItem.ToString(), DirectSpSearchInput.Text);
         }
     }
 }

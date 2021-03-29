@@ -34,17 +34,12 @@
             this.Events = new System.Windows.Forms.TabPage();
             this.DirectSearchGroup = new System.Windows.Forms.GroupBox();
             this.DirectSearchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DirectSearchInput = new System.Windows.Forms.TextBox();
             this.DirectSearchValueLabel = new System.Windows.Forms.Label();
             this.SearchByOpt = new System.Windows.Forms.ComboBox();
             this.SearchByLabel = new System.Windows.Forms.Label();
             this.EventSortingGroup = new System.Windows.Forms.GroupBox();
-            this.ShowSortedEvtButton = new System.Windows.Forms.Button();
-            this.DateRangeLabelTo = new System.Windows.Forms.Label();
-            this.DateTo = new System.Windows.Forms.TextBox();
-            this.DateFrom = new System.Windows.Forms.TextBox();
-            this.DateRangeLabelFrom = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.OrderEvtOpt = new System.Windows.Forms.ComboBox();
             this.OrderEvtLabel = new System.Windows.Forms.Label();
             this.SortEvtOpt = new System.Windows.Forms.ComboBox();
             this.SortEvtLabel = new System.Windows.Forms.Label();
@@ -52,10 +47,10 @@
             this.NearestEventsData = new System.Windows.Forms.DataGridView();
             this.Sportmen = new System.Windows.Forms.TabPage();
             this.Direct = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.DirectSpSearchButton = new System.Windows.Forms.Button();
+            this.DirectSpSearchInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.DirectSpSearchOpt = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SportsmenSortGroup = new System.Windows.Forms.GroupBox();
             this.ShowSortedSpButton = new System.Windows.Forms.Button();
@@ -65,6 +60,7 @@
             this.SortSpLabel = new System.Windows.Forms.Label();
             this.SportsmenDataGroup = new System.Windows.Forms.GroupBox();
             this.SpData = new System.Windows.Forms.DataGridView();
+            this.ShowEventsButton = new System.Windows.Forms.Button();
             this.GuestControls.SuspendLayout();
             this.Events.SuspendLayout();
             this.DirectSearchGroup.SuspendLayout();
@@ -107,7 +103,7 @@
             this.GuestControls.Location = new System.Drawing.Point(12, 123);
             this.GuestControls.Name = "GuestControls";
             this.GuestControls.SelectedIndex = 0;
-            this.GuestControls.Size = new System.Drawing.Size(810, 437);
+            this.GuestControls.Size = new System.Drawing.Size(810, 419);
             this.GuestControls.TabIndex = 2;
             // 
             // Events
@@ -118,7 +114,7 @@
             this.Events.Location = new System.Drawing.Point(4, 22);
             this.Events.Name = "Events";
             this.Events.Padding = new System.Windows.Forms.Padding(3);
-            this.Events.Size = new System.Drawing.Size(802, 411);
+            this.Events.Size = new System.Drawing.Size(802, 393);
             this.Events.TabIndex = 0;
             this.Events.Text = "Мероприятия";
             this.Events.UseVisualStyleBackColor = true;
@@ -126,13 +122,13 @@
             // DirectSearchGroup
             // 
             this.DirectSearchGroup.Controls.Add(this.DirectSearchButton);
-            this.DirectSearchGroup.Controls.Add(this.textBox1);
+            this.DirectSearchGroup.Controls.Add(this.DirectSearchInput);
             this.DirectSearchGroup.Controls.Add(this.DirectSearchValueLabel);
             this.DirectSearchGroup.Controls.Add(this.SearchByOpt);
             this.DirectSearchGroup.Controls.Add(this.SearchByLabel);
             this.DirectSearchGroup.Location = new System.Drawing.Point(416, 238);
             this.DirectSearchGroup.Name = "DirectSearchGroup";
-            this.DirectSearchGroup.Size = new System.Drawing.Size(374, 167);
+            this.DirectSearchGroup.Size = new System.Drawing.Size(374, 144);
             this.DirectSearchGroup.TabIndex = 5;
             this.DirectSearchGroup.TabStop = false;
             this.DirectSearchGroup.Text = "Прямой поиск";
@@ -145,13 +141,14 @@
             this.DirectSearchButton.TabIndex = 9;
             this.DirectSearchButton.Text = "Найти";
             this.DirectSearchButton.UseVisualStyleBackColor = true;
+            this.DirectSearchButton.Click += new System.EventHandler(this.DirectSearchButton_Click);
             // 
-            // textBox1
+            // DirectSearchInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(121, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(129, 20);
-            this.textBox1.TabIndex = 5;
+            this.DirectSearchInput.Location = new System.Drawing.Point(121, 64);
+            this.DirectSearchInput.Name = "DirectSearchInput";
+            this.DirectSearchInput.Size = new System.Drawing.Size(129, 20);
+            this.DirectSearchInput.TabIndex = 5;
             // 
             // DirectSearchValueLabel
             // 
@@ -165,6 +162,11 @@
             // SearchByOpt
             // 
             this.SearchByOpt.FormattingEnabled = true;
+            this.SearchByOpt.Items.AddRange(new object[] {
+            "Команде",
+            "Названию",
+            "Месту",
+            "Типу"});
             this.SearchByOpt.Location = new System.Drawing.Point(121, 26);
             this.SearchByOpt.Name = "SearchByOpt";
             this.SearchByOpt.Size = new System.Drawing.Size(129, 21);
@@ -181,70 +183,28 @@
             // 
             // EventSortingGroup
             // 
-            this.EventSortingGroup.Controls.Add(this.ShowSortedEvtButton);
-            this.EventSortingGroup.Controls.Add(this.DateRangeLabelTo);
-            this.EventSortingGroup.Controls.Add(this.DateTo);
-            this.EventSortingGroup.Controls.Add(this.DateFrom);
-            this.EventSortingGroup.Controls.Add(this.DateRangeLabelFrom);
-            this.EventSortingGroup.Controls.Add(this.comboBox1);
+            this.EventSortingGroup.Controls.Add(this.ShowEventsButton);
+            this.EventSortingGroup.Controls.Add(this.OrderEvtOpt);
             this.EventSortingGroup.Controls.Add(this.OrderEvtLabel);
             this.EventSortingGroup.Controls.Add(this.SortEvtOpt);
             this.EventSortingGroup.Controls.Add(this.SortEvtLabel);
             this.EventSortingGroup.Location = new System.Drawing.Point(6, 238);
             this.EventSortingGroup.Name = "EventSortingGroup";
-            this.EventSortingGroup.Size = new System.Drawing.Size(393, 167);
+            this.EventSortingGroup.Size = new System.Drawing.Size(393, 144);
             this.EventSortingGroup.TabIndex = 4;
             this.EventSortingGroup.TabStop = false;
             this.EventSortingGroup.Text = "Сортировка";
             // 
-            // ShowSortedEvtButton
+            // OrderEvtOpt
             // 
-            this.ShowSortedEvtButton.Location = new System.Drawing.Point(273, 106);
-            this.ShowSortedEvtButton.Name = "ShowSortedEvtButton";
-            this.ShowSortedEvtButton.Size = new System.Drawing.Size(95, 23);
-            this.ShowSortedEvtButton.TabIndex = 8;
-            this.ShowSortedEvtButton.Text = "Показать";
-            this.ShowSortedEvtButton.UseVisualStyleBackColor = true;
-            // 
-            // DateRangeLabelTo
-            // 
-            this.DateRangeLabelTo.AutoSize = true;
-            this.DateRangeLabelTo.Location = new System.Drawing.Point(176, 111);
-            this.DateRangeLabelTo.Name = "DateRangeLabelTo";
-            this.DateRangeLabelTo.Size = new System.Drawing.Size(19, 13);
-            this.DateRangeLabelTo.TabIndex = 7;
-            this.DateRangeLabelTo.Text = "до";
-            // 
-            // DateTo
-            // 
-            this.DateTo.Location = new System.Drawing.Point(208, 107);
-            this.DateTo.Name = "DateTo";
-            this.DateTo.Size = new System.Drawing.Size(46, 20);
-            this.DateTo.TabIndex = 6;
-            // 
-            // DateFrom
-            // 
-            this.DateFrom.Location = new System.Drawing.Point(120, 108);
-            this.DateFrom.Name = "DateFrom";
-            this.DateFrom.Size = new System.Drawing.Size(46, 20);
-            this.DateFrom.TabIndex = 5;
-            // 
-            // DateRangeLabelFrom
-            // 
-            this.DateRangeLabelFrom.AutoSize = true;
-            this.DateRangeLabelFrom.Location = new System.Drawing.Point(17, 111);
-            this.DateRangeLabelFrom.Name = "DateRangeLabelFrom";
-            this.DateRangeLabelFrom.Size = new System.Drawing.Size(97, 13);
-            this.DateRangeLabelFrom.TabIndex = 4;
-            this.DateRangeLabelFrom.Text = "Диапазон дат. От";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(110, 66);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(129, 21);
-            this.comboBox1.TabIndex = 3;
+            this.OrderEvtOpt.FormattingEnabled = true;
+            this.OrderEvtOpt.Items.AddRange(new object[] {
+            "Возрастанию",
+            "Убыванию"});
+            this.OrderEvtOpt.Location = new System.Drawing.Point(110, 66);
+            this.OrderEvtOpt.Name = "OrderEvtOpt";
+            this.OrderEvtOpt.Size = new System.Drawing.Size(129, 21);
+            this.OrderEvtOpt.TabIndex = 3;
             // 
             // OrderEvtLabel
             // 
@@ -259,7 +219,12 @@
             // 
             this.SortEvtOpt.FormattingEnabled = true;
             this.SortEvtOpt.Items.AddRange(new object[] {
-            "Месту"});
+            "Месту",
+            "Команде",
+            "Дате",
+            "Времени",
+            "Названию",
+            "Типу"});
             this.SortEvtOpt.Location = new System.Drawing.Point(110, 26);
             this.SortEvtOpt.Name = "SortEvtOpt";
             this.SortEvtOpt.Size = new System.Drawing.Size(129, 21);
@@ -304,17 +269,17 @@
             this.Sportmen.Name = "Sportmen";
             this.Sportmen.Padding = new System.Windows.Forms.Padding(3);
             this.Sportmen.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Sportmen.Size = new System.Drawing.Size(802, 411);
+            this.Sportmen.Size = new System.Drawing.Size(802, 393);
             this.Sportmen.TabIndex = 1;
             this.Sportmen.Text = "Спортсмены";
             this.Sportmen.UseVisualStyleBackColor = true;
             // 
             // Direct
             // 
-            this.Direct.Controls.Add(this.button1);
-            this.Direct.Controls.Add(this.textBox2);
+            this.Direct.Controls.Add(this.DirectSpSearchButton);
+            this.Direct.Controls.Add(this.DirectSpSearchInput);
             this.Direct.Controls.Add(this.label1);
-            this.Direct.Controls.Add(this.comboBox2);
+            this.Direct.Controls.Add(this.DirectSpSearchOpt);
             this.Direct.Controls.Add(this.label2);
             this.Direct.Location = new System.Drawing.Point(296, 262);
             this.Direct.Name = "Direct";
@@ -324,21 +289,22 @@
             this.Direct.TabStop = false;
             this.Direct.Text = "Прямой поиск";
             // 
-            // button1
+            // DirectSpSearchButton
             // 
-            this.button1.Location = new System.Drawing.Point(19, 97);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Найти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.DirectSpSearchButton.Location = new System.Drawing.Point(19, 97);
+            this.DirectSpSearchButton.Name = "DirectSpSearchButton";
+            this.DirectSpSearchButton.Size = new System.Drawing.Size(95, 23);
+            this.DirectSpSearchButton.TabIndex = 9;
+            this.DirectSpSearchButton.Text = "Найти";
+            this.DirectSpSearchButton.UseVisualStyleBackColor = true;
+            this.DirectSpSearchButton.Click += new System.EventHandler(this.DirectSpSearchButton_Click);
             // 
-            // textBox2
+            // DirectSpSearchInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(121, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(129, 20);
-            this.textBox2.TabIndex = 5;
+            this.DirectSpSearchInput.Location = new System.Drawing.Point(121, 64);
+            this.DirectSpSearchInput.Name = "DirectSpSearchInput";
+            this.DirectSpSearchInput.Size = new System.Drawing.Size(129, 20);
+            this.DirectSpSearchInput.TabIndex = 5;
             // 
             // label1
             // 
@@ -349,13 +315,19 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Введите значение";
             // 
-            // comboBox2
+            // DirectSpSearchOpt
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(121, 26);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(129, 21);
-            this.comboBox2.TabIndex = 3;
+            this.DirectSpSearchOpt.FormattingEnabled = true;
+            this.DirectSpSearchOpt.Items.AddRange(new object[] {
+            "Фамилии",
+            "Гражданству",
+            "Росту",
+            "Весу",
+            "Команде"});
+            this.DirectSpSearchOpt.Location = new System.Drawing.Point(121, 26);
+            this.DirectSpSearchOpt.Name = "DirectSpSearchOpt";
+            this.DirectSpSearchOpt.Size = new System.Drawing.Size(129, 21);
+            this.DirectSpSearchOpt.TabIndex = 3;
             // 
             // label2
             // 
@@ -456,17 +428,28 @@
             this.SpData.Size = new System.Drawing.Size(772, 225);
             this.SpData.TabIndex = 0;
             // 
+            // ShowEventsButton
+            // 
+            this.ShowEventsButton.Location = new System.Drawing.Point(20, 104);
+            this.ShowEventsButton.Name = "ShowEventsButton";
+            this.ShowEventsButton.Size = new System.Drawing.Size(95, 23);
+            this.ShowEventsButton.TabIndex = 10;
+            this.ShowEventsButton.Text = "Показать";
+            this.ShowEventsButton.UseVisualStyleBackColor = true;
+            this.ShowEventsButton.Click += new System.EventHandler(this.ShowEventsButton_Click);
+            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 572);
+            this.ClientSize = new System.Drawing.Size(834, 548);
             this.Controls.Add(this.GuestControls);
             this.Controls.Add(this.ToAuthLink);
             this.Controls.Add(this.WelcomeLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Welcome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добро пожаловать";
             this.Load += new System.EventHandler(this.Welcome_Load);
             this.GuestControls.ResumeLayout(false);
@@ -499,12 +482,7 @@
         private System.Windows.Forms.ComboBox SearchByOpt;
         private System.Windows.Forms.Label SearchByLabel;
         private System.Windows.Forms.GroupBox EventSortingGroup;
-        private System.Windows.Forms.Button ShowSortedEvtButton;
-        private System.Windows.Forms.Label DateRangeLabelTo;
-        private System.Windows.Forms.TextBox DateTo;
-        private System.Windows.Forms.TextBox DateFrom;
-        private System.Windows.Forms.Label DateRangeLabelFrom;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox OrderEvtOpt;
         private System.Windows.Forms.Label OrderEvtLabel;
         private System.Windows.Forms.ComboBox SortEvtOpt;
         private System.Windows.Forms.Label SortEvtLabel;
@@ -512,14 +490,14 @@
         private System.Windows.Forms.DataGridView NearestEventsData;
         private System.Windows.Forms.TabPage Sportmen;
         private System.Windows.Forms.Button DirectSearchButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DirectSearchInput;
         private System.Windows.Forms.Label DirectSearchValueLabel;
         private System.Windows.Forms.GroupBox SportsmenDataGroup;
         private System.Windows.Forms.GroupBox Direct;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button DirectSpSearchButton;
+        private System.Windows.Forms.TextBox DirectSpSearchInput;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox DirectSpSearchOpt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox SportsmenSortGroup;
         private System.Windows.Forms.Button ShowSortedSpButton;
@@ -528,6 +506,7 @@
         private System.Windows.Forms.ComboBox SortSpByOpt;
         private System.Windows.Forms.Label SortSpLabel;
         private System.Windows.Forms.DataGridView SpData;
+        private System.Windows.Forms.Button ShowEventsButton;
     }
 }
 

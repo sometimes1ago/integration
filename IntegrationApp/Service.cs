@@ -53,7 +53,51 @@ namespace IntegrationApp
         }
 
         /// <summary>
-        /// Метод устанвливающий какой именно пользователь авторизовался
+        /// Метод, получающий сортировочный параметр
+        /// </summary>
+        /// <param name="SelectedItem">Выбранный элемент комбобокса</param>
+        /// <returns></returns>
+        public static string GetSortByParameter(string SelectedItem)
+        {
+            switch (SelectedItem)
+            {
+                case "Фамилии":
+                    SelectedItem = "Фамилия";
+                    break;
+                case "Гражданству":
+                    SelectedItem = "Гражданство";
+                    break;
+                case "Росту":
+                    SelectedItem = "Рост_см";
+                    break;
+                case "Весу":
+                    SelectedItem = "Вес_кг";
+                    break;
+                case "Команде":
+                    SelectedItem = "Команда";
+                    break;
+                case "Дате":
+                    SelectedItem = "Дата_проведения";
+                    break;
+                case "Времени":
+                    SelectedItem = "Время_проведения";
+                    break;
+                case "Типу":
+                    SelectedItem = "Тип_мероприятия";
+                    break;
+                case "Месту":
+                    SelectedItem = "Место_проведения";
+                    break;
+                case "Названию":
+                    SelectedItem = "Название";
+                    break;
+            }
+
+            return SelectedItem;
+        }
+
+        /// <summary>
+        /// Метод, устанвливающий какой именно пользователь авторизовался
         /// </summary>
         /// <param name="UserLogin">Логин пользователя</param>
         public static void SetAuthorizedUser(string UserLogin)

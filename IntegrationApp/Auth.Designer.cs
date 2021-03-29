@@ -35,13 +35,13 @@
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.ShowPassControl = new System.Windows.Forms.CheckBox();
             this.AuthButton = new System.Windows.Forms.Button();
-            this.ToDataRecover = new System.Windows.Forms.LinkLabel();
+            this.BackLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // AuthLabel
             // 
             this.AuthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.AuthLabel.Location = new System.Drawing.Point(68, 32);
+            this.AuthLabel.Location = new System.Drawing.Point(48, 32);
             this.AuthLabel.Name = "AuthLabel";
             this.AuthLabel.Size = new System.Drawing.Size(220, 68);
             this.AuthLabel.TabIndex = 0;
@@ -53,7 +53,7 @@
             this.LoginLabel.AutoSize = true;
             this.LoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
             this.LoginLabel.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.LoginLabel.Location = new System.Drawing.Point(152, 125);
+            this.LoginLabel.Location = new System.Drawing.Point(135, 125);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(47, 17);
             this.LoginLabel.TabIndex = 1;
@@ -61,14 +61,14 @@
             // 
             // LoginInput
             // 
-            this.LoginInput.Location = new System.Drawing.Point(86, 157);
+            this.LoginInput.Location = new System.Drawing.Point(69, 157);
             this.LoginInput.Name = "LoginInput";
             this.LoginInput.Size = new System.Drawing.Size(179, 20);
             this.LoginInput.TabIndex = 2;
             // 
             // PasswordInput
             // 
-            this.PasswordInput.Location = new System.Drawing.Point(86, 228);
+            this.PasswordInput.Location = new System.Drawing.Point(69, 228);
             this.PasswordInput.Name = "PasswordInput";
             this.PasswordInput.Size = new System.Drawing.Size(179, 20);
             this.PasswordInput.TabIndex = 4;
@@ -79,7 +79,7 @@
             this.PasswordLabel.AutoSize = true;
             this.PasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
             this.PasswordLabel.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.PasswordLabel.Location = new System.Drawing.Point(152, 196);
+            this.PasswordLabel.Location = new System.Drawing.Point(130, 196);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(57, 17);
             this.PasswordLabel.TabIndex = 3;
@@ -88,7 +88,7 @@
             // ShowPassControl
             // 
             this.ShowPassControl.AutoSize = true;
-            this.ShowPassControl.Location = new System.Drawing.Point(124, 266);
+            this.ShowPassControl.Location = new System.Drawing.Point(101, 266);
             this.ShowPassControl.Name = "ShowPassControl";
             this.ShowPassControl.Size = new System.Drawing.Size(114, 17);
             this.ShowPassControl.TabIndex = 5;
@@ -99,7 +99,7 @@
             // AuthButton
             // 
             this.AuthButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.AuthButton.Location = new System.Drawing.Point(86, 341);
+            this.AuthButton.Location = new System.Drawing.Point(69, 307);
             this.AuthButton.Name = "AuthButton";
             this.AuthButton.Size = new System.Drawing.Size(179, 29);
             this.AuthButton.TabIndex = 6;
@@ -107,22 +107,23 @@
             this.AuthButton.UseVisualStyleBackColor = true;
             this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
             // 
-            // ToDataRecover
+            // BackLink
             // 
-            this.ToDataRecover.AutoSize = true;
-            this.ToDataRecover.Location = new System.Drawing.Point(131, 298);
-            this.ToDataRecover.Name = "ToDataRecover";
-            this.ToDataRecover.Size = new System.Drawing.Size(93, 13);
-            this.ToDataRecover.TabIndex = 7;
-            this.ToDataRecover.TabStop = true;
-            this.ToDataRecover.Text = "Забыли данные?";
+            this.BackLink.AutoSize = true;
+            this.BackLink.Location = new System.Drawing.Point(139, 358);
+            this.BackLink.Name = "BackLink";
+            this.BackLink.Size = new System.Drawing.Size(39, 13);
+            this.BackLink.TabIndex = 8;
+            this.BackLink.TabStop = true;
+            this.BackLink.Text = "Назад";
+            this.BackLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.BackLink_LinkClicked);
             // 
             // Auth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 450);
-            this.Controls.Add(this.ToDataRecover);
+            this.ClientSize = new System.Drawing.Size(315, 405);
+            this.Controls.Add(this.BackLink);
             this.Controls.Add(this.AuthButton);
             this.Controls.Add(this.ShowPassControl);
             this.Controls.Add(this.PasswordInput);
@@ -131,7 +132,9 @@
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.AuthLabel);
             this.Name = "Auth";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Auth_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +149,6 @@
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.CheckBox ShowPassControl;
         private System.Windows.Forms.Button AuthButton;
-        private System.Windows.Forms.LinkLabel ToDataRecover;
+        private System.Windows.Forms.LinkLabel BackLink;
     }
 }

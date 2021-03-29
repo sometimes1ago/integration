@@ -12,10 +12,12 @@ namespace IntegrationApp
 {
     public partial class Auth : Form
     {
-        public Auth()
+        private Form FormToBack;
+        public Auth(Welcome welcome)
         {
             InitializeComponent();
             ShowPass();
+            FormToBack = welcome;
         }
 
         private void AuthButton_Click(object sender, EventArgs e)
@@ -96,6 +98,17 @@ namespace IntegrationApp
             {
                 PasswordInput.UseSystemPasswordChar = true;
             }
+        }
+
+        private void Auth_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void BackLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Hide();
+            FormToBack.Show();
         }
     }
 }

@@ -58,6 +58,7 @@
     <Compile Include="Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="Manager.cs">
       <SubType>Form</SubType>
