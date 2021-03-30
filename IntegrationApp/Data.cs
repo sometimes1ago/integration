@@ -63,5 +63,16 @@ namespace IntegrationApp
                 " " + Service.GetOrderParameter(OrderBy);
             return DB.SearchValuesQuery(GetEventsData);
         }
+
+        /// <summary>
+        /// Метод, получающий фио пользователя, согласно его логину
+        /// </summary>
+        /// <param name="Userlogin">Логин авторизованного пользователя</param>
+        /// <returns></returns>
+        public static object GetAuthorizedUserData(string Userlogin)
+        {
+            string Query = "execute GetAuthUserData " + "\'" + Service.AuthorizedUser + "\'";
+            return DB.SearchValuesQuery(Query);
+        }
     }
 }

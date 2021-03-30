@@ -16,7 +16,6 @@ using System.Threading.Tasks;
         {
             private static readonly string ConnStr = @"Data Source=localhost; Initial Catalog = СпортКлуб; Integrated Security=true";
             public static DataSet ds;
-            public static string AuthorizedUser;
             private static SqlDataAdapter sqlad;
             private static SqlCommand comnd;
 

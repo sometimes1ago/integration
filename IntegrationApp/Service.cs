@@ -11,6 +11,9 @@ namespace IntegrationApp
     /// </summary>
     class Service
     {
+        //Логин авторизованного пользователя
+        public static string AuthorizedUser;
+
         /// <summary>
         /// Метод генерирующий секретный ключ используемый при регистрации или добавлении пользователей
         /// </summary>
@@ -102,7 +105,7 @@ namespace IntegrationApp
         /// <param name="UserLogin">Логин пользователя</param>
         public static void SetAuthorizedUser(string UserLogin)
         {
-            DB.AuthorizedUser = UserLogin;
+            AuthorizedUser = UserLogin;
         }
 
         /// <summary>
