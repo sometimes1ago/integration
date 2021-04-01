@@ -300,3 +300,29 @@ as
 	end
 go
 
+create procedure AddNewSportsman
+@surname varchar(25), @name varchar(25), @lastName varchar(25), @citizen varchar(25), @birthdate date, @weight int, @height int, @authData int
+as
+	begin
+		if ((select count(ID_Спортсмена) from Спортсмены where Фамилия = @surname and Имя = @name) > 1)
+			begin
+				rollback transaction 
+				raiserror('Спортсмен с данными фамилией и именем уже существует',0,1)
+			end
+		else
+			begin
+				insert into Спортсмены(Фамилия, Имя, Отчество, Гражданство, Дата_рождения, Вес_кг, Рост_см, Данные_для_входа)
+				values	(@surname, @name, @lastName, @citizen, @birthdate, @weight, @height, @authData)
+			end
+	end
+go
+
+create procedure GetEmpIDByAuthUser
+@userlogin varchar(25), @temp int = 0
+as
+	begin
+		set @temp = (select ID_Пользователя from Пользователи where Логин = @userlogin)
+		select ID_Сотрудника from Сотрудники where ID_Сотрудника = @temp
+	end
+go
+

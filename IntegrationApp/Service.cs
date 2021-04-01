@@ -109,6 +109,7 @@ namespace IntegrationApp
             AuthorizedUser = UserLogin;
         }
 
+
         /// <summary>
         /// Метод, разделяющий выбранный элемент комбобокса согласно разделителю
         /// </summary>
@@ -159,9 +160,17 @@ namespace IntegrationApp
             DB.Execute(CreateNewUserQuery);
         }
 
+        /// <summary>
+        /// Получение ID последнего добавленного пользователя согласно его логину
+        /// </summary>
+        /// <param name="Userlogin">Логин последнего добавленного пользователя</param>
+        /// <returns></returns>
         public static int GetNewUserID(string Userlogin)
         {
-            string GetQuery = "select ID_Пользователя"
+            string GetIDQuery = "select max(ID_Пользователя) from Пользователи";
+            DB.SearchValuesQuery(GetIDQuery);
+            int ID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
+            return ID;
         }
     }
 }

@@ -74,5 +74,19 @@ namespace IntegrationApp
             string Query = "execute GetAuthUserData " + "\'" + Service.AuthorizedUser + "\'";
             return DB.SearchValuesQuery(Query);
         }
+
+        /// <summary>
+        /// Метод, получающий ID авторизованного пользователя
+        /// </summary>
+        /// <param name="Userlogin"></param>
+        /// <returns></returns>
+        public static int GetEmployeeIDByUserlogin(string Userlogin)
+        {
+            string GetIDQuery = "execute GetEmpIDByAuthUser " + "\'" + Service.AuthorizedUser + "\'";
+            DB.SearchValuesQuery(GetIDQuery);
+            int EmpID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0]);
+            return EmpID;
+        }
+
     }
 }
