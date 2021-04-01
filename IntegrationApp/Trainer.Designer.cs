@@ -31,6 +31,19 @@
             this.GuestControls = new System.Windows.Forms.TabControl();
             this.Sportmen = new System.Windows.Forms.TabPage();
             this.Adding = new System.Windows.Forms.GroupBox();
+            this.AddSportsmanButton = new System.Windows.Forms.Button();
+            this.PassConfirmInput = new System.Windows.Forms.TextBox();
+            this.PassConfirmLabel = new System.Windows.Forms.Label();
+            this.PasswordInput = new System.Windows.Forms.TextBox();
+            this.LoginInput = new System.Windows.Forms.TextBox();
+            this.HeightInput = new System.Windows.Forms.TextBox();
+            this.WeightInput = new System.Windows.Forms.TextBox();
+            this.BirthdateInput = new System.Windows.Forms.TextBox();
+            this.CitizenshipInput = new System.Windows.Forms.TextBox();
+            this.LastNameInput = new System.Windows.Forms.TextBox();
+            this.NameSpInput = new System.Windows.Forms.TextBox();
+            this.SurnameSpInput = new System.Windows.Forms.TextBox();
+            this.PasswordLabel = new System.Windows.Forms.Label();
             this.WeightLabel = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.HeightLabel = new System.Windows.Forms.Label();
@@ -47,19 +60,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SportsmenDataGroup = new System.Windows.Forms.GroupBox();
             this.SpData = new System.Windows.Forms.DataGridView();
-            this.PasswordLabel = new System.Windows.Forms.Label();
-            this.SurnameSpInput = new System.Windows.Forms.TextBox();
-            this.NameSpInput = new System.Windows.Forms.TextBox();
-            this.LastNameInput = new System.Windows.Forms.TextBox();
-            this.CitizenshipInput = new System.Windows.Forms.TextBox();
-            this.BirthdateInput = new System.Windows.Forms.TextBox();
-            this.WeightInput = new System.Windows.Forms.TextBox();
-            this.HeightInput = new System.Windows.Forms.TextBox();
-            this.LoginInput = new System.Windows.Forms.TextBox();
-            this.PasswordInput = new System.Windows.Forms.TextBox();
-            this.PassConfirmInput = new System.Windows.Forms.TextBox();
-            this.PassConfirmLabel = new System.Windows.Forms.Label();
-            this.AddSportsmanButton = new System.Windows.Forms.Button();
             this.GuestControls.SuspendLayout();
             this.Sportmen.SuspendLayout();
             this.Adding.SuspendLayout();
@@ -121,6 +121,104 @@
             this.Adding.TabIndex = 8;
             this.Adding.TabStop = false;
             this.Adding.Text = "Добавление спортсмена";
+            // 
+            // AddSportsmanButton
+            // 
+            this.AddSportsmanButton.Location = new System.Drawing.Point(338, 284);
+            this.AddSportsmanButton.Name = "AddSportsmanButton";
+            this.AddSportsmanButton.Size = new System.Drawing.Size(84, 40);
+            this.AddSportsmanButton.TabIndex = 20;
+            this.AddSportsmanButton.Text = "Добавить";
+            this.AddSportsmanButton.UseVisualStyleBackColor = true;
+            this.AddSportsmanButton.Click += new System.EventHandler(this.AddSportsmanButton_Click);
+            // 
+            // PassConfirmInput
+            // 
+            this.PassConfirmInput.Location = new System.Drawing.Point(207, 304);
+            this.PassConfirmInput.Name = "PassConfirmInput";
+            this.PassConfirmInput.Size = new System.Drawing.Size(100, 20);
+            this.PassConfirmInput.TabIndex = 19;
+            // 
+            // PassConfirmLabel
+            // 
+            this.PassConfirmLabel.AutoSize = true;
+            this.PassConfirmLabel.Location = new System.Drawing.Point(204, 279);
+            this.PassConfirmLabel.Name = "PassConfirmLabel";
+            this.PassConfirmLabel.Size = new System.Drawing.Size(100, 13);
+            this.PassConfirmLabel.TabIndex = 18;
+            this.PassConfirmLabel.Text = "Повторите пароль";
+            // 
+            // PasswordInput
+            // 
+            this.PasswordInput.Location = new System.Drawing.Point(207, 244);
+            this.PasswordInput.Name = "PasswordInput";
+            this.PasswordInput.Size = new System.Drawing.Size(100, 20);
+            this.PasswordInput.TabIndex = 17;
+            // 
+            // LoginInput
+            // 
+            this.LoginInput.Location = new System.Drawing.Point(207, 182);
+            this.LoginInput.Name = "LoginInput";
+            this.LoginInput.Size = new System.Drawing.Size(100, 20);
+            this.LoginInput.TabIndex = 16;
+            // 
+            // HeightInput
+            // 
+            this.HeightInput.Location = new System.Drawing.Point(207, 120);
+            this.HeightInput.Name = "HeightInput";
+            this.HeightInput.Size = new System.Drawing.Size(100, 20);
+            this.HeightInput.TabIndex = 15;
+            // 
+            // WeightInput
+            // 
+            this.WeightInput.Location = new System.Drawing.Point(207, 57);
+            this.WeightInput.Name = "WeightInput";
+            this.WeightInput.Size = new System.Drawing.Size(100, 20);
+            this.WeightInput.TabIndex = 14;
+            // 
+            // BirthdateInput
+            // 
+            this.BirthdateInput.Location = new System.Drawing.Point(19, 304);
+            this.BirthdateInput.Name = "BirthdateInput";
+            this.BirthdateInput.Size = new System.Drawing.Size(100, 20);
+            this.BirthdateInput.TabIndex = 13;
+            // 
+            // CitizenshipInput
+            // 
+            this.CitizenshipInput.Location = new System.Drawing.Point(19, 244);
+            this.CitizenshipInput.Name = "CitizenshipInput";
+            this.CitizenshipInput.Size = new System.Drawing.Size(100, 20);
+            this.CitizenshipInput.TabIndex = 12;
+            // 
+            // LastNameInput
+            // 
+            this.LastNameInput.Location = new System.Drawing.Point(19, 182);
+            this.LastNameInput.Name = "LastNameInput";
+            this.LastNameInput.Size = new System.Drawing.Size(100, 20);
+            this.LastNameInput.TabIndex = 11;
+            // 
+            // NameSpInput
+            // 
+            this.NameSpInput.Location = new System.Drawing.Point(19, 120);
+            this.NameSpInput.Name = "NameSpInput";
+            this.NameSpInput.Size = new System.Drawing.Size(100, 20);
+            this.NameSpInput.TabIndex = 10;
+            // 
+            // SurnameSpInput
+            // 
+            this.SurnameSpInput.Location = new System.Drawing.Point(19, 57);
+            this.SurnameSpInput.Name = "SurnameSpInput";
+            this.SurnameSpInput.Size = new System.Drawing.Size(100, 20);
+            this.SurnameSpInput.TabIndex = 9;
+            // 
+            // PasswordLabel
+            // 
+            this.PasswordLabel.AutoSize = true;
+            this.PasswordLabel.Location = new System.Drawing.Point(204, 219);
+            this.PasswordLabel.Name = "PasswordLabel";
+            this.PasswordLabel.Size = new System.Drawing.Size(45, 13);
+            this.PasswordLabel.TabIndex = 8;
+            this.PasswordLabel.Text = "Пароль";
             // 
             // WeightLabel
             // 
@@ -272,104 +370,6 @@
             this.SpData.Size = new System.Drawing.Size(772, 225);
             this.SpData.TabIndex = 0;
             // 
-            // PasswordLabel
-            // 
-            this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(204, 219);
-            this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(45, 13);
-            this.PasswordLabel.TabIndex = 8;
-            this.PasswordLabel.Text = "Пароль";
-            // 
-            // SurnameSpInput
-            // 
-            this.SurnameSpInput.Location = new System.Drawing.Point(19, 57);
-            this.SurnameSpInput.Name = "SurnameSpInput";
-            this.SurnameSpInput.Size = new System.Drawing.Size(100, 20);
-            this.SurnameSpInput.TabIndex = 9;
-            // 
-            // NameSpInput
-            // 
-            this.NameSpInput.Location = new System.Drawing.Point(19, 120);
-            this.NameSpInput.Name = "NameSpInput";
-            this.NameSpInput.Size = new System.Drawing.Size(100, 20);
-            this.NameSpInput.TabIndex = 10;
-            // 
-            // LastNameInput
-            // 
-            this.LastNameInput.Location = new System.Drawing.Point(19, 182);
-            this.LastNameInput.Name = "LastNameInput";
-            this.LastNameInput.Size = new System.Drawing.Size(100, 20);
-            this.LastNameInput.TabIndex = 11;
-            // 
-            // CitizenshipInput
-            // 
-            this.CitizenshipInput.Location = new System.Drawing.Point(19, 244);
-            this.CitizenshipInput.Name = "CitizenshipInput";
-            this.CitizenshipInput.Size = new System.Drawing.Size(100, 20);
-            this.CitizenshipInput.TabIndex = 12;
-            // 
-            // BirthdateInput
-            // 
-            this.BirthdateInput.Location = new System.Drawing.Point(19, 304);
-            this.BirthdateInput.Name = "BirthdateInput";
-            this.BirthdateInput.Size = new System.Drawing.Size(100, 20);
-            this.BirthdateInput.TabIndex = 13;
-            // 
-            // WeightInput
-            // 
-            this.WeightInput.Location = new System.Drawing.Point(207, 57);
-            this.WeightInput.Name = "WeightInput";
-            this.WeightInput.Size = new System.Drawing.Size(100, 20);
-            this.WeightInput.TabIndex = 14;
-            // 
-            // HeightInput
-            // 
-            this.HeightInput.Location = new System.Drawing.Point(207, 120);
-            this.HeightInput.Name = "HeightInput";
-            this.HeightInput.Size = new System.Drawing.Size(100, 20);
-            this.HeightInput.TabIndex = 15;
-            // 
-            // LoginInput
-            // 
-            this.LoginInput.Location = new System.Drawing.Point(207, 182);
-            this.LoginInput.Name = "LoginInput";
-            this.LoginInput.Size = new System.Drawing.Size(100, 20);
-            this.LoginInput.TabIndex = 16;
-            // 
-            // PasswordInput
-            // 
-            this.PasswordInput.Location = new System.Drawing.Point(207, 244);
-            this.PasswordInput.Name = "PasswordInput";
-            this.PasswordInput.Size = new System.Drawing.Size(100, 20);
-            this.PasswordInput.TabIndex = 17;
-            // 
-            // PassConfirmInput
-            // 
-            this.PassConfirmInput.Location = new System.Drawing.Point(207, 304);
-            this.PassConfirmInput.Name = "PassConfirmInput";
-            this.PassConfirmInput.Size = new System.Drawing.Size(100, 20);
-            this.PassConfirmInput.TabIndex = 19;
-            // 
-            // PassConfirmLabel
-            // 
-            this.PassConfirmLabel.AutoSize = true;
-            this.PassConfirmLabel.Location = new System.Drawing.Point(204, 279);
-            this.PassConfirmLabel.Name = "PassConfirmLabel";
-            this.PassConfirmLabel.Size = new System.Drawing.Size(100, 13);
-            this.PassConfirmLabel.TabIndex = 18;
-            this.PassConfirmLabel.Text = "Повторите пароль";
-            // 
-            // AddSportsmanButton
-            // 
-            this.AddSportsmanButton.Location = new System.Drawing.Point(338, 284);
-            this.AddSportsmanButton.Name = "AddSportsmanButton";
-            this.AddSportsmanButton.Size = new System.Drawing.Size(84, 40);
-            this.AddSportsmanButton.TabIndex = 20;
-            this.AddSportsmanButton.Text = "Добавить";
-            this.AddSportsmanButton.UseVisualStyleBackColor = true;
-            this.AddSportsmanButton.Click += new System.EventHandler(this.AddSportsmanButton_Click);
-            // 
             // Trainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +381,7 @@
             this.Name = "Trainer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Спортивный клуб \"Олимпиец\" - Тренер";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Trainer_FormClosing);
             this.GuestControls.ResumeLayout(false);
             this.Sportmen.ResumeLayout(false);
             this.Adding.ResumeLayout(false);

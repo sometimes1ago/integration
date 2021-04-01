@@ -283,3 +283,20 @@ as
 	end
 go
 
+create procedure CreateNewUser
+@login varchar(25), @password varchar(25), @userType int
+as
+	begin
+		if exists(select Логин from Пользователи where Логин = @login)
+			begin
+				rollback transaction
+				raiserror('Пользователь с таким логином уже существует!',0,1)
+			end
+		else
+			begin
+				insert into Пользователи(Логин, Пароль, Тип_пользователя)
+				values	(@login, @password, @userType)
+			end
+	end
+go
+

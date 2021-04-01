@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace IntegrationApp
 {
@@ -119,6 +120,48 @@ namespace IntegrationApp
             string SelectedString = SelectedItem;
             string[] SplStrArr = SelectedString.Split(Separator);
             return SplStrArr;
+        }
+
+        /// <summary>
+        /// Метод, проверяющий корректность ввода ФИО, чтобы она была только на русском языке без других символов
+        /// </summary>
+        /// <param name="Surname">Фамилия</param>
+        /// <param name="Name">Имя</param>
+        /// <param name="LastName">Отчество</param>
+        /// <returns></returns>
+        public static bool FIOMatcher(string Surname, string Name, string LastName)
+        {
+            Regex Regex = new Regex(@"^[А-Я][а-я]+(-[А-Я][а-я]+)?$");
+            Match SurnameMatch = Regex.Match(Surname);
+            Match NameMatch = Regex.Match(Name);
+            Match LastNameMatch = Regex.Match(LastName);
+
+            if (SurnameMatch.Success && NameMatch.Success && LastNameMatch.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Метод, создающий нового пользователя определенного типа
+        /// </summary>
+        /// <param name="Login">Логин</param>
+        /// <param name="Password">Пароль</param>
+        /// <param name="UserType">Тип пользователя</param>
+        public static void CreateNewUser(string Login, string Password, int UserType)
+        {
+            string CreateNewUserQuery = "execute CreateNewUser " + "\'" + Login + "\'" + "," + "\'" + Password + "\'"
+                + "," + "\'" + UserType + "\'";
+            DB.Execute(CreateNewUserQuery);
+        }
+
+        public static int GetNewUserID(string Userlogin)
+        {
+            string GetQuery = "select ID_Пользователя"
         }
     }
 }
