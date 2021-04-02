@@ -148,6 +148,27 @@ namespace IntegrationApp
         }
 
         /// <summary>
+        /// Метод, проверяющий одиночную строку на соответствие регулярному выражению
+        /// </summary>
+        /// <param name="RegexPattern">Регулярное выражение</param>
+        /// <param name="CheckableString">Проверяемая строка</param>
+        /// <returns></returns>
+        public static bool SimpleStringMatcher(string RegexPattern, string CheckableString)
+        {
+            Regex Regex = new Regex(RegexPattern);
+            Match CheckableStringMatch = Regex.Match(CheckableString);
+
+            if (CheckableStringMatch.Success)
+            {
+                return true;
+            } 
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Метод, создающий нового пользователя определенного типа
         /// </summary>
         /// <param name="Login">Логин</param>
@@ -172,5 +193,6 @@ namespace IntegrationApp
             int ID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
             return ID;
         }
+
     }
 }

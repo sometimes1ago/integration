@@ -12,12 +12,10 @@ namespace IntegrationApp
 {
     public partial class Auth : Form
     {
-        private Form FormToBack;
-        public Auth(Welcome welcome)
+        public Auth()
         {
             InitializeComponent();
             ShowPass();
-            FormToBack = welcome;
         }
 
         private void AuthButton_Click(object sender, EventArgs e)
@@ -36,6 +34,7 @@ namespace IntegrationApp
                         if (LoginInput.Text == DB.ds.Tables[0].Rows[i][0].ToString() && PasswordInput.Text == DB.ds.Tables[0].Rows[i][1].ToString())
                         {
                             isCorrect = true;
+                            Service.SetAuthorizedUser(LoginInput.Text);
 
                             switch(DB.ds.Tables[0].Rows[i][2].ToString())
                             {
@@ -108,7 +107,8 @@ namespace IntegrationApp
         private void BackLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Hide();
-            FormToBack.Show();
+            Welcome wel = new Welcome();
+            wel.Show();
         }
     }
 }

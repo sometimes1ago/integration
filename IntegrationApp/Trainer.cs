@@ -57,14 +57,16 @@ namespace IntegrationApp
                                 //Добавление спортсмена в команду тренера
                                 string InsertSportsmanIntoTeamQuery = "insert into Спортсмены_в_команде(Команда, Спортсмен) values(" +
                                     "\'" + TeamID + "\'" + "," + "\'" + NewSpID + "\'" + ")";
-                                DB.Execute(InsertNewSportsmanQuery);
+                                DB.Execute(InsertSportsmanIntoTeamQuery);
 
+                                //Получение названия команды по ее ID
                                 string GetTeamName = "select Наименование from Команды where ID_Команды = " + "\'" + TeamID + "\'";
                                 DB.SearchValuesQuery(GetTeamName);
                                 string TeamName = DB.ds.Tables[0].Rows[0][0].ToString();
 
                                 MessageBox.Show($@"Спортсмен {SurnameSpInput.Text} {NameSpInput.Text} {LastNameInput.Text} успешно добавлен в команду {TeamName}");
-                            } 
+                                SpData.DataSource = Data.GetSpData("Фамилии", "Убыванию");
+                            }
                             else
                             {
                                 throw new Exception("Пароли не совпадают!");
@@ -94,6 +96,69 @@ namespace IntegrationApp
         private void Trainer_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Trainer_Load(object sender, EventArgs e)
+        {
+            GreetingsLabel.Text += Data.GetEmpSurnameNameByLogin(Service.AuthorizedUser);
+
+            SpData.DataSource = GetTrainerSpData();
+        }
+
+        private static object GetTrainerSpData()
+        {
+            string Query = "execute GetTrainerSpData " + "\'" + Data.GetEmployeeIDByUserlogin(Service.AuthorizedUser) + "\'";
+            return DB.SearchValuesQuery(Query);
+        }
+
+        private void LogoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Service.AuthorizedUser = null;
+            Hide();
+            Auth auth = new Auth();
+            auth.Show();
+        }
+
+        private void SportsmanDeletingButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SurnameInput.Text != "" && NameInput.Text != "")
+                {
+                    //Получение ID спортсмена
+                    string GetSpID = "select ID_Спортсмена from Спортсмены where Фамилия = " + "\'" + SurnameInput.Text + "\'" +
+                        " and Имя = " + "\'" + NameInput.Text + "\'";
+                    DB.SearchValuesQuery(GetSpID);
+                    int SpID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
+
+                    //Получение пользователя спортсмена
+                    string GetSpUserID = "select Данные_для_входа from Спортсмены where ID_Спортсмена = " + "\'" + SpID + "\'";
+                    DB.SearchValuesQuery(GetSpUserID);
+                    int UserID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
+
+                    //Удаление спортсмена из команды
+                    string DropSportsmanFromTeam = "delete from Спортсмены_в_команде where Спортсмен = " + "\'" + SpID + "\'";
+                    DB.Execute(DropSportsmanFromTeam);
+
+                    //Удаление спортсмена
+                    string DropSportsmanQuery = "delete from Спортсмены where ID_Спортсмена = " + "\'" + SpID + "\'";
+                    DB.Execute(DropSportsmanQuery);
+
+                    //Удаление пользователя спортсмена
+                    string DropSpUser = "string delete from Пользователи where ID_Пользователя = " + "\'" + UserID + "\'";
+                    DB.Execute(DropSpUser);
+
+                    MessageBox.Show($@"Спортсмен {SurnameInput.Text} {NameInput.Text} успешно удален");
+                }
+                else
+                {
+                    throw new Exception("Фамилия и имя при удалении не могут быть пустыми!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

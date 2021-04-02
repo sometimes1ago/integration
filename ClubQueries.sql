@@ -261,10 +261,11 @@ from Спортсмены inner join Спортсмены_в_команде on Спортсмены_в_команде.Спортсме
 				inner join Команды on Команды.ID_Команды = Спортсмены_в_команде.Команда
 go
 
+
 create view GetEventsData
-(Название, Тип_мероприятия, Дата_проведения, Время_проведения, Место_проведения, Команда)
+(Название, Тип_мероприятия, Дата_проведения, Время_проведения, Место_проведения, Команда, Статус)
 as
-select Мероприятия.Наименование, Типы_мероприятий.Наименование, Дата_проведения, Время_проведения, Место_проведения, Команды.Наименование
+select Мероприятия.Наименование, Типы_мероприятий.Наименование, Дата_проведения, Время_проведения, Место_проведения, Команды.Наименование, Мероприятия.Статус
 from Команды_на_мероприятии inner join Команды on Команды_на_мероприятии.Команда = Команды.ID_Команды
 							inner join Мероприятия on Команды_на_мероприятии.Мероприятие = Мероприятия.ID_Мероприятия
 							inner join Типы_мероприятий on Мероприятия.Тип_мероприятия = Типы_мероприятий.ID_Типа
@@ -318,11 +319,86 @@ as
 go
 
 create procedure GetEmpIDByAuthUser
-@userlogin varchar(25), @temp int = 0
+@userlogin varchar(25)
 as
 	begin
-		set @temp = (select ID_Пользователя from Пользователи where Логин = @userlogin)
-		select ID_Сотрудника from Сотрудники where ID_Сотрудника = @temp
+		select ID_Сотрудника 
+		from Сотрудники inner join Пользователи on Сотрудники.Данные_для_входа = Пользователи.ID_Пользователя
+		where Пользователи.Логин = @userlogin
 	end
 go
 
+
+create procedure CreateNewEvent
+@name varchar(50), @evtType int, @evtDate date, @evtTime time, @evtPlace varchar(150), @status varchar(25)
+as
+	begin
+		if exists (select Наименование from Мероприятия where Наименование = @name)
+			begin	
+				rollback tran
+				raiserror('Мероприятие с таким названием уже существует!',0,1)
+			end
+		else 
+			begin
+				insert into Мероприятия(Наименование, Тип_мероприятия, Дата_проведения, Время_проведения, Место_проведения, Статус)
+				values	(@name, @evtType, @evtDate, @evtTime, @evtPlace, @status)
+			end
+	end
+go
+
+create procedure GetSurnameNameByLogin
+@login varchar(25)
+as
+	begin
+		select Фамилия, Имя
+		from Сотрудники inner join Пользователи on Сотрудники.Данные_для_входа = Пользователи.ID_Пользователя
+		where Пользователи.Логин = @login
+	end
+go
+
+create procedure GetTrainerSpData
+@trainerID int, @temp int = 0, @teamName varchar(25) = ''
+as
+	begin
+		set @temp = (select ID_Команды from Команды where Тренер = @trainerID)
+		set @teamName = (select Наименование from Команды where ID_Команды = @temp)
+		select * from  GetSportsmanData where Команда = @teamName
+	end
+go
+
+execute GetTrainerSpData '2'
+
+/* Триггеры */
+create drop trigger ValidSportsmanDelete
+on Спортсмены
+for delete
+as
+	declare @surname varchar(25) = (select Фамилия from deleted)
+	declare @name varchar(25) = (select Имя from deleted)
+		begin
+			if exists (select ID_Спортсмена from Спортсмены where Фамилия = @surname and Имя = @name)
+				begin
+					delete from Спортсмены where Фамилия = @surname and Имя = @name
+				end
+			else
+				begin
+					rollback transaction 
+					raiserror('Такого спортсмена не существует! Удаление невозможно',0,1)
+				end
+		end
+go
+
+create trigger CreateEventDateValidator
+on Мероприятия
+for insert, update
+as
+	declare @evtID int = (select ID_Мероприятия from inserted)
+	declare @evtDate date = (select Дата_проведения from inserted)
+		begin
+			if ((select Дата_проведения from Мероприятия where ID_Мероприятия = @evtID) < getdate()) 
+				begin
+					rollback tran 
+					raiserror('Добавить мероприятие с датой меньше сегодняшней невозможно',0,1)
+				end
+		end
+go

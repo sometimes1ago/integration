@@ -51,6 +51,7 @@ namespace IntegrationApp
             return DB.SearchValuesQuery(GetSportsmenData);
         }
 
+
         /// <summary>
         /// Метод, получающий данные о мероприятиях, согласно параметру сортировки и упорядочивания
         /// </summary>
@@ -82,11 +83,18 @@ namespace IntegrationApp
         /// <returns></returns>
         public static int GetEmployeeIDByUserlogin(string Userlogin)
         {
-            string GetIDQuery = "execute GetEmpIDByAuthUser " + "\'" + Service.AuthorizedUser + "\'";
+            string GetIDQuery = "execute GetEmpIDByAuthUser " + "\'" + Userlogin + "\'";
             DB.SearchValuesQuery(GetIDQuery);
-            int EmpID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0]);
+            int EmpID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
             return EmpID;
         }
 
+        public static string GetEmpSurnameNameByLogin(string Login)
+        {
+            string GetData = "execute GetSurnameNameByLogin " + "\'" + Service.AuthorizedUser + "\'";
+            DB.SearchValuesQuery(GetData);
+            string SurnameName = DB.ds.Tables[0].Rows[0][0].ToString() + " " + DB.ds.Tables[0].Rows[0][1].ToString();
+            return SurnameName;
+        }
     }
 }

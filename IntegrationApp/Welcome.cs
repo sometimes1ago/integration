@@ -19,7 +19,7 @@ namespace IntegrationApp
 
         private void ToAuthLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Auth auth = new Auth(this);
+            Auth auth = new Auth();
             Hide();
             auth.Show();
         }

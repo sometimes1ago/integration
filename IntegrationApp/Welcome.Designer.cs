@@ -39,6 +39,7 @@
             this.SearchByOpt = new System.Windows.Forms.ComboBox();
             this.SearchByLabel = new System.Windows.Forms.Label();
             this.EventSortingGroup = new System.Windows.Forms.GroupBox();
+            this.ShowEventsButton = new System.Windows.Forms.Button();
             this.OrderEvtOpt = new System.Windows.Forms.ComboBox();
             this.OrderEvtLabel = new System.Windows.Forms.Label();
             this.SortEvtOpt = new System.Windows.Forms.ComboBox();
@@ -60,7 +61,6 @@
             this.SortSpLabel = new System.Windows.Forms.Label();
             this.SportsmenDataGroup = new System.Windows.Forms.GroupBox();
             this.SpData = new System.Windows.Forms.DataGridView();
-            this.ShowEventsButton = new System.Windows.Forms.Button();
             this.GuestControls.SuspendLayout();
             this.Events.SuspendLayout();
             this.DirectSearchGroup.SuspendLayout();
@@ -77,7 +77,7 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.WelcomeLabel.Location = new System.Drawing.Point(180, 25);
+            this.WelcomeLabel.Location = new System.Drawing.Point(107, 30);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(454, 67);
             this.WelcomeLabel.TabIndex = 0;
@@ -88,7 +88,7 @@
             // 
             this.ToAuthLink.AutoSize = true;
             this.ToAuthLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.ToAuthLink.Location = new System.Drawing.Point(763, 55);
+            this.ToAuthLink.Location = new System.Drawing.Point(651, 60);
             this.ToAuthLink.Name = "ToAuthLink";
             this.ToAuthLink.Size = new System.Drawing.Size(43, 15);
             this.ToAuthLink.TabIndex = 1;
@@ -103,7 +103,7 @@
             this.GuestControls.Location = new System.Drawing.Point(12, 123);
             this.GuestControls.Name = "GuestControls";
             this.GuestControls.SelectedIndex = 0;
-            this.GuestControls.Size = new System.Drawing.Size(810, 419);
+            this.GuestControls.Size = new System.Drawing.Size(686, 419);
             this.GuestControls.TabIndex = 2;
             // 
             // Events
@@ -114,7 +114,7 @@
             this.Events.Location = new System.Drawing.Point(4, 22);
             this.Events.Name = "Events";
             this.Events.Padding = new System.Windows.Forms.Padding(3);
-            this.Events.Size = new System.Drawing.Size(802, 393);
+            this.Events.Size = new System.Drawing.Size(678, 393);
             this.Events.TabIndex = 0;
             this.Events.Text = "Мероприятия";
             this.Events.UseVisualStyleBackColor = true;
@@ -126,9 +126,9 @@
             this.DirectSearchGroup.Controls.Add(this.DirectSearchValueLabel);
             this.DirectSearchGroup.Controls.Add(this.SearchByOpt);
             this.DirectSearchGroup.Controls.Add(this.SearchByLabel);
-            this.DirectSearchGroup.Location = new System.Drawing.Point(416, 238);
+            this.DirectSearchGroup.Location = new System.Drawing.Point(283, 238);
             this.DirectSearchGroup.Name = "DirectSearchGroup";
-            this.DirectSearchGroup.Size = new System.Drawing.Size(374, 144);
+            this.DirectSearchGroup.Size = new System.Drawing.Size(279, 144);
             this.DirectSearchGroup.TabIndex = 5;
             this.DirectSearchGroup.TabStop = false;
             this.DirectSearchGroup.Text = "Прямой поиск";
@@ -190,10 +190,20 @@
             this.EventSortingGroup.Controls.Add(this.SortEvtLabel);
             this.EventSortingGroup.Location = new System.Drawing.Point(6, 238);
             this.EventSortingGroup.Name = "EventSortingGroup";
-            this.EventSortingGroup.Size = new System.Drawing.Size(393, 144);
+            this.EventSortingGroup.Size = new System.Drawing.Size(271, 144);
             this.EventSortingGroup.TabIndex = 4;
             this.EventSortingGroup.TabStop = false;
             this.EventSortingGroup.Text = "Сортировка";
+            // 
+            // ShowEventsButton
+            // 
+            this.ShowEventsButton.Location = new System.Drawing.Point(20, 104);
+            this.ShowEventsButton.Name = "ShowEventsButton";
+            this.ShowEventsButton.Size = new System.Drawing.Size(95, 23);
+            this.ShowEventsButton.TabIndex = 10;
+            this.ShowEventsButton.Text = "Показать";
+            this.ShowEventsButton.UseVisualStyleBackColor = true;
+            this.ShowEventsButton.Click += new System.EventHandler(this.ShowEventsButton_Click);
             // 
             // OrderEvtOpt
             // 
@@ -244,7 +254,7 @@
             this.EventsData.Controls.Add(this.NearestEventsData);
             this.EventsData.Location = new System.Drawing.Point(6, 6);
             this.EventsData.Name = "EventsData";
-            this.EventsData.Size = new System.Drawing.Size(790, 226);
+            this.EventsData.Size = new System.Drawing.Size(662, 226);
             this.EventsData.TabIndex = 3;
             this.EventsData.TabStop = false;
             this.EventsData.Text = "Ближайщие метроприятия";
@@ -257,7 +267,7 @@
             this.NearestEventsData.Location = new System.Drawing.Point(6, 19);
             this.NearestEventsData.Name = "NearestEventsData";
             this.NearestEventsData.ReadOnly = true;
-            this.NearestEventsData.Size = new System.Drawing.Size(778, 201);
+            this.NearestEventsData.Size = new System.Drawing.Size(649, 201);
             this.NearestEventsData.TabIndex = 0;
             // 
             // Sportmen
@@ -269,7 +279,7 @@
             this.Sportmen.Name = "Sportmen";
             this.Sportmen.Padding = new System.Windows.Forms.Padding(3);
             this.Sportmen.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Sportmen.Size = new System.Drawing.Size(802, 393);
+            this.Sportmen.Size = new System.Drawing.Size(678, 393);
             this.Sportmen.TabIndex = 1;
             this.Sportmen.Text = "Спортсмены";
             this.Sportmen.UseVisualStyleBackColor = true;
@@ -428,21 +438,11 @@
             this.SpData.Size = new System.Drawing.Size(772, 225);
             this.SpData.TabIndex = 0;
             // 
-            // ShowEventsButton
-            // 
-            this.ShowEventsButton.Location = new System.Drawing.Point(20, 104);
-            this.ShowEventsButton.Name = "ShowEventsButton";
-            this.ShowEventsButton.Size = new System.Drawing.Size(95, 23);
-            this.ShowEventsButton.TabIndex = 10;
-            this.ShowEventsButton.Text = "Показать";
-            this.ShowEventsButton.UseVisualStyleBackColor = true;
-            this.ShowEventsButton.Click += new System.EventHandler(this.ShowEventsButton_Click);
-            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 548);
+            this.ClientSize = new System.Drawing.Size(709, 548);
             this.Controls.Add(this.GuestControls);
             this.Controls.Add(this.ToAuthLink);
             this.Controls.Add(this.WelcomeLabel);

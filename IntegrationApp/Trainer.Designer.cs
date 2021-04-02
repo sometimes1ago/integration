@@ -60,6 +60,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SportsmenDataGroup = new System.Windows.Forms.GroupBox();
             this.SpData = new System.Windows.Forms.DataGridView();
+            this.GreetingsLabel = new System.Windows.Forms.Label();
+            this.LogoutLink = new System.Windows.Forms.LinkLabel();
             this.GuestControls.SuspendLayout();
             this.Sportmen.SuspendLayout();
             this.Adding.SuspendLayout();
@@ -74,7 +76,7 @@
             this.GuestControls.Location = new System.Drawing.Point(3, 101);
             this.GuestControls.Name = "GuestControls";
             this.GuestControls.SelectedIndex = 0;
-            this.GuestControls.Size = new System.Drawing.Size(817, 631);
+            this.GuestControls.Size = new System.Drawing.Size(819, 598);
             this.GuestControls.TabIndex = 3;
             // 
             // Sportmen
@@ -86,7 +88,7 @@
             this.Sportmen.Name = "Sportmen";
             this.Sportmen.Padding = new System.Windows.Forms.Padding(3);
             this.Sportmen.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Sportmen.Size = new System.Drawing.Size(809, 605);
+            this.Sportmen.Size = new System.Drawing.Size(811, 572);
             this.Sportmen.TabIndex = 1;
             this.Sportmen.Text = "Спортсмены";
             this.Sportmen.UseVisualStyleBackColor = true;
@@ -117,14 +119,14 @@
             this.Adding.Location = new System.Drawing.Point(6, 262);
             this.Adding.Name = "Adding";
             this.Adding.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Adding.Size = new System.Drawing.Size(498, 337);
+            this.Adding.Size = new System.Drawing.Size(498, 284);
             this.Adding.TabIndex = 8;
             this.Adding.TabStop = false;
             this.Adding.Text = "Добавление спортсмена";
             // 
             // AddSportsmanButton
             // 
-            this.AddSportsmanButton.Location = new System.Drawing.Point(338, 284);
+            this.AddSportsmanButton.Location = new System.Drawing.Point(345, 219);
             this.AddSportsmanButton.Name = "AddSportsmanButton";
             this.AddSportsmanButton.Size = new System.Drawing.Size(84, 40);
             this.AddSportsmanButton.TabIndex = 20;
@@ -134,7 +136,7 @@
             // 
             // PassConfirmInput
             // 
-            this.PassConfirmInput.Location = new System.Drawing.Point(207, 304);
+            this.PassConfirmInput.Location = new System.Drawing.Point(362, 117);
             this.PassConfirmInput.Name = "PassConfirmInput";
             this.PassConfirmInput.Size = new System.Drawing.Size(100, 20);
             this.PassConfirmInput.TabIndex = 19;
@@ -142,7 +144,7 @@
             // PassConfirmLabel
             // 
             this.PassConfirmLabel.AutoSize = true;
-            this.PassConfirmLabel.Location = new System.Drawing.Point(204, 279);
+            this.PassConfirmLabel.Location = new System.Drawing.Point(359, 92);
             this.PassConfirmLabel.Name = "PassConfirmLabel";
             this.PassConfirmLabel.Size = new System.Drawing.Size(100, 13);
             this.PassConfirmLabel.TabIndex = 18;
@@ -150,35 +152,35 @@
             // 
             // PasswordInput
             // 
-            this.PasswordInput.Location = new System.Drawing.Point(207, 244);
+            this.PasswordInput.Location = new System.Drawing.Point(362, 57);
             this.PasswordInput.Name = "PasswordInput";
             this.PasswordInput.Size = new System.Drawing.Size(100, 20);
             this.PasswordInput.TabIndex = 17;
             // 
             // LoginInput
             // 
-            this.LoginInput.Location = new System.Drawing.Point(207, 182);
+            this.LoginInput.Location = new System.Drawing.Point(207, 242);
             this.LoginInput.Name = "LoginInput";
             this.LoginInput.Size = new System.Drawing.Size(100, 20);
             this.LoginInput.TabIndex = 16;
             // 
             // HeightInput
             // 
-            this.HeightInput.Location = new System.Drawing.Point(207, 120);
+            this.HeightInput.Location = new System.Drawing.Point(207, 180);
             this.HeightInput.Name = "HeightInput";
             this.HeightInput.Size = new System.Drawing.Size(100, 20);
             this.HeightInput.TabIndex = 15;
             // 
             // WeightInput
             // 
-            this.WeightInput.Location = new System.Drawing.Point(207, 57);
+            this.WeightInput.Location = new System.Drawing.Point(207, 117);
             this.WeightInput.Name = "WeightInput";
             this.WeightInput.Size = new System.Drawing.Size(100, 20);
             this.WeightInput.TabIndex = 14;
             // 
             // BirthdateInput
             // 
-            this.BirthdateInput.Location = new System.Drawing.Point(19, 304);
+            this.BirthdateInput.Location = new System.Drawing.Point(207, 57);
             this.BirthdateInput.Name = "BirthdateInput";
             this.BirthdateInput.Size = new System.Drawing.Size(100, 20);
             this.BirthdateInput.TabIndex = 13;
@@ -214,7 +216,7 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(204, 219);
+            this.PasswordLabel.Location = new System.Drawing.Point(359, 32);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(45, 13);
             this.PasswordLabel.TabIndex = 8;
@@ -223,7 +225,7 @@
             // WeightLabel
             // 
             this.WeightLabel.AutoSize = true;
-            this.WeightLabel.Location = new System.Drawing.Point(204, 33);
+            this.WeightLabel.Location = new System.Drawing.Point(204, 93);
             this.WeightLabel.Name = "WeightLabel";
             this.WeightLabel.Size = new System.Drawing.Size(26, 13);
             this.WeightLabel.TabIndex = 7;
@@ -232,7 +234,7 @@
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(204, 160);
+            this.LoginLabel.Location = new System.Drawing.Point(204, 220);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(38, 13);
             this.LoginLabel.TabIndex = 6;
@@ -241,7 +243,7 @@
             // HeightLabel
             // 
             this.HeightLabel.AutoSize = true;
-            this.HeightLabel.Location = new System.Drawing.Point(204, 97);
+            this.HeightLabel.Location = new System.Drawing.Point(204, 157);
             this.HeightLabel.Name = "HeightLabel";
             this.HeightLabel.Size = new System.Drawing.Size(31, 13);
             this.HeightLabel.TabIndex = 5;
@@ -250,7 +252,7 @@
             // BirthdateLabel
             // 
             this.BirthdateLabel.AutoSize = true;
-            this.BirthdateLabel.Location = new System.Drawing.Point(19, 282);
+            this.BirthdateLabel.Location = new System.Drawing.Point(207, 35);
             this.BirthdateLabel.Name = "BirthdateLabel";
             this.BirthdateLabel.Size = new System.Drawing.Size(86, 13);
             this.BirthdateLabel.TabIndex = 4;
@@ -322,6 +324,7 @@
             this.SportsmanDeletingButton.TabIndex = 9;
             this.SportsmanDeletingButton.Text = "Удалить";
             this.SportsmanDeletingButton.UseVisualStyleBackColor = true;
+            this.SportsmanDeletingButton.Click += new System.EventHandler(this.SportsmanDeletingButton_Click);
             // 
             // NameInput
             // 
@@ -354,7 +357,7 @@
             this.SportsmenDataGroup.Location = new System.Drawing.Point(6, 6);
             this.SportsmenDataGroup.Name = "SportsmenDataGroup";
             this.SportsmenDataGroup.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SportsmenDataGroup.Size = new System.Drawing.Size(784, 250);
+            this.SportsmenDataGroup.Size = new System.Drawing.Size(799, 250);
             this.SportsmenDataGroup.TabIndex = 0;
             this.SportsmenDataGroup.TabStop = false;
             this.SportsmenDataGroup.Text = "Данные спортсменов";
@@ -367,14 +370,37 @@
             this.SpData.Location = new System.Drawing.Point(6, 19);
             this.SpData.Name = "SpData";
             this.SpData.ReadOnly = true;
-            this.SpData.Size = new System.Drawing.Size(772, 225);
+            this.SpData.Size = new System.Drawing.Size(787, 225);
             this.SpData.TabIndex = 0;
+            // 
+            // GreetingsLabel
+            // 
+            this.GreetingsLabel.AutoSize = true;
+            this.GreetingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.GreetingsLabel.Location = new System.Drawing.Point(14, 42);
+            this.GreetingsLabel.Name = "GreetingsLabel";
+            this.GreetingsLabel.Size = new System.Drawing.Size(249, 29);
+            this.GreetingsLabel.TabIndex = 4;
+            this.GreetingsLabel.Text = "Добро пожаловать,  ";
+            // 
+            // LogoutLink
+            // 
+            this.LogoutLink.AutoSize = true;
+            this.LogoutLink.Location = new System.Drawing.Point(773, 54);
+            this.LogoutLink.Name = "LogoutLink";
+            this.LogoutLink.Size = new System.Drawing.Size(39, 13);
+            this.LogoutLink.TabIndex = 5;
+            this.LogoutLink.TabStop = true;
+            this.LogoutLink.Text = "Выйти";
+            this.LogoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
             // Trainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 736);
+            this.ClientSize = new System.Drawing.Size(824, 705);
+            this.Controls.Add(this.LogoutLink);
+            this.Controls.Add(this.GreetingsLabel);
             this.Controls.Add(this.GuestControls);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -382,6 +408,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Спортивный клуб \"Олимпиец\" - Тренер";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Trainer_FormClosing);
+            this.Load += new System.EventHandler(this.Trainer_Load);
             this.GuestControls.ResumeLayout(false);
             this.Sportmen.ResumeLayout(false);
             this.Adding.ResumeLayout(false);
@@ -391,6 +418,7 @@
             this.SportsmenDataGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SpData)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -428,5 +456,7 @@
         private System.Windows.Forms.TextBox LastNameInput;
         private System.Windows.Forms.TextBox NameSpInput;
         private System.Windows.Forms.TextBox SurnameSpInput;
+        private System.Windows.Forms.Label GreetingsLabel;
+        private System.Windows.Forms.LinkLabel LogoutLink;
     }
 }
