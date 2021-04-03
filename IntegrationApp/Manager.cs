@@ -27,6 +27,7 @@ namespace IntegrationApp
             NearestEventsData.DataSource = Data.GetEvtData(SortEvtOpt.SelectedItem.ToString(), OrderEvtOpt.SelectedItem.ToString());
             FillEventsList();
             FillTeamsList();
+            FillDeletableEvtList();
         }
 
         private string SwitchEventType(string EventType)
@@ -49,6 +50,8 @@ namespace IntegrationApp
 
         private void FillEventsList()
         {
+            SelectEvtOpt.Items.Clear();
+
             string GetEvtNames = "select Наименование from Мероприятия";
             DB.SearchValuesQuery(GetEvtNames);
 
@@ -60,6 +63,8 @@ namespace IntegrationApp
 
         private void FillTeamsList()
         {
+            SelectTeamOpt.Items.Clear();
+
             string GetTeamsNames = "select Наименование from Команды";
             DB.SearchValuesQuery(GetTeamsNames);
 
@@ -67,6 +72,27 @@ namespace IntegrationApp
             {
                 SelectTeamOpt.Items.Add(DB.ds.Tables[0].Rows[i][0].ToString());
             }
+        }
+
+        private void FillDeletableEvtList()
+        {
+            SelectDelEvtOpt.Items.Clear();
+
+            string GetEvtNames = "select Наименование from Мероприятия";
+            DB.SearchValuesQuery(GetEvtNames);
+
+            for (int i = 0; i < DB.ds.Tables[0].Rows.Count; i++)
+            {
+                SelectDelEvtOpt.Items.Add(DB.ds.Tables[0].Rows[i][0].ToString());
+            }
+        }
+
+        private void ClearAddInputs()
+        {
+            EventNameInput.Text = "";
+            EventPlaceInput.Text = "";
+            EventTimeInput.Text = "";
+            EventDateInput.Text = "";
         }
 
         private void CreateEventButton_Click(object sender, EventArgs e)
@@ -84,6 +110,8 @@ namespace IntegrationApp
                     MessageBox.Show("Мероприятие успешно создано");
                     NearestEventsData.DataSource = Data.GetEvtData(SortEvtOpt.SelectedItem.ToString(), OrderEvtOpt.SelectedItem.ToString());
                     FillEventsList();
+                    FillDeletableEvtList();
+                    ClearAddInputs();
                 }
                 else
                 {
@@ -98,21 +126,38 @@ namespace IntegrationApp
 
         private void AddTeamToEvtButton_Click(object sender, EventArgs e)
         {
-            string GetEvtID = "select ID_Мероприятия from Мероприятия where Наименование = " + "\'" + SelectEvtOpt.SelectedItem.ToString() + "\'";
-            DB.SearchValuesQuery(GetEvtID);
-            int EvtID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
+            try
+            {
+                if (SelectEvtOpt.Text != "" && SelectTeamOpt.Text != "")
+                {
+                    string GetEvtID = "select ID_Мероприятия from Мероприятия where Наименование = " + "\'" + SelectEvtOpt.SelectedItem.ToString() + "\'";
+                    DB.SearchValuesQuery(GetEvtID);
+                    int EvtID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
 
-            string GetTeamID = "select ID_Команды from Команды where Наименование = " + "\'" + SelectTeamOpt.SelectedItem.ToString() + "\'";
-            DB.SearchValuesQuery(GetTeamID);
-            int TeamID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
+                    string GetTeamID = "select ID_Команды from Команды where Наименование = " + "\'" + SelectTeamOpt.SelectedItem.ToString() + "\'";
+                    DB.SearchValuesQuery(GetTeamID);
+                    int TeamID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
 
-            string ConnectEvtWithTeam = "insert into Команды_на_мероприятии(Мероприятие, Команда) values(" + "\'" + EvtID + "\'" + "," + "\'" +
-                TeamID + "\'" + ")";
-            DB.Execute(ConnectEvtWithTeam);
+                    string ConnectEvtWithTeam = "insert into Команды_на_мероприятии(Мероприятие, Команда) values(" + "\'" + EvtID + "\'" + "," + "\'" +
+                        TeamID + "\'" + ")";
+                    DB.Execute(ConnectEvtWithTeam);
 
-            MessageBox.Show("Команда успешно добавлена на мероприятие");
+                    MessageBox.Show("Команда успешно добавлена на мероприятие");
 
-            NearestEventsData.DataSource = Data.GetEvtData(SortEvtOpt.SelectedItem.ToString(), OrderEvtOpt.SelectedItem.ToString());
+                    NearestEventsData.DataSource = Data.GetEvtData(SortEvtOpt.SelectedItem.ToString(), OrderEvtOpt.SelectedItem.ToString());
+                    FillEventsList();
+                    FillTeamsList();
+                    FillDeletableEvtList();
+                }
+                else
+                {
+                    throw new Exception("Необходимо выбрать мероприятие и команду!");
+                }
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ShowEventsButton_Click(object sender, EventArgs e)
@@ -122,7 +167,21 @@ namespace IntegrationApp
 
         private void DirectSearchButton_Click(object sender, EventArgs e)
         {
-            NearestEventsData.DataSource = Data.DirectEvtDataSearch(SearchByOpt.SelectedItem.ToString(), DirectSearchInput.Text);
+            try
+            {
+                if (DirectSearchInput.Text != "")
+                {
+                    NearestEventsData.DataSource = Data.DirectEvtDataSearch(SearchByOpt.SelectedItem.ToString(), DirectSearchInput.Text);
+                }
+                else
+                {
+                    throw new Exception("Для прямого поиска нужно ввести значение!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void LogoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -131,6 +190,39 @@ namespace IntegrationApp
             Hide();
             Auth auth = new Auth();
             auth.Show();
+        }
+
+        private void DeleteEvtButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SelectDelEvtOpt.Text != "")
+                {
+                    string GetEvtID = "select ID_Мероприятия from Мероприятия where Наименование = " + "\'" + SelectDelEvtOpt.SelectedItem.ToString() + "\'";
+                    DB.SearchValuesQuery(GetEvtID);
+                    int EvtID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
+
+                    string DropTeamsOnEvt = "delete from Команды_на_мероприятии where Мероприятие = " + "\'" + EvtID + "\'";
+                    DB.Execute(DropTeamsOnEvt);
+
+                    string DropEvt = "delete from Мероприятия where ID_Мероприятия = " + "\'" + EvtID + "\'";
+                    DB.Execute(DropEvt);
+
+                    MessageBox.Show("Мероприятие успешно удалено!");
+
+                    NearestEventsData.DataSource = Data.GetEvtData(SortEvtOpt.SelectedItem.ToString(), OrderEvtOpt.SelectedItem.ToString());
+                    FillEventsList();
+                    FillDeletableEvtList();
+                }
+                else
+                {
+                    throw new Exception("Для удаления мероприятия необходимо его выбрать из списка");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

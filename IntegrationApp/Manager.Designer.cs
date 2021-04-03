@@ -31,6 +31,11 @@
             this.GuestControls = new System.Windows.Forms.TabControl();
             this.Events = new System.Windows.Forms.TabPage();
             this.AddTeamOnEventGroup = new System.Windows.Forms.GroupBox();
+            this.AddTeamToEvtButton = new System.Windows.Forms.Button();
+            this.SelectTeamOpt = new System.Windows.Forms.ComboBox();
+            this.SelTeamLab = new System.Windows.Forms.Label();
+            this.SelectEvtOpt = new System.Windows.Forms.ComboBox();
+            this.SelectTeamLabel = new System.Windows.Forms.Label();
             this.EventCreatingSection = new System.Windows.Forms.GroupBox();
             this.CreateEventButton = new System.Windows.Forms.Button();
             this.EventPlaceInput = new System.Windows.Forms.TextBox();
@@ -59,11 +64,10 @@
             this.NearestEventsData = new System.Windows.Forms.DataGridView();
             this.GreetingsLabel = new System.Windows.Forms.Label();
             this.LogoutLink = new System.Windows.Forms.LinkLabel();
-            this.SelectTeamLabel = new System.Windows.Forms.Label();
-            this.SelectEvtOpt = new System.Windows.Forms.ComboBox();
-            this.SelectTeamOpt = new System.Windows.Forms.ComboBox();
-            this.SelTeamLab = new System.Windows.Forms.Label();
-            this.AddTeamToEvtButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SelectDelEvtLabel = new System.Windows.Forms.Label();
+            this.SelectDelEvtOpt = new System.Windows.Forms.ComboBox();
+            this.DeleteEvtButton = new System.Windows.Forms.Button();
             this.GuestControls.SuspendLayout();
             this.Events.SuspendLayout();
             this.AddTeamOnEventGroup.SuspendLayout();
@@ -72,6 +76,7 @@
             this.EventSortingGroup.SuspendLayout();
             this.EventsData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NearestEventsData)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GuestControls
@@ -85,6 +90,7 @@
             // 
             // Events
             // 
+            this.Events.Controls.Add(this.groupBox1);
             this.Events.Controls.Add(this.AddTeamOnEventGroup);
             this.Events.Controls.Add(this.EventCreatingSection);
             this.Events.Controls.Add(this.DirectSearchGroup);
@@ -107,10 +113,54 @@
             this.AddTeamOnEventGroup.Controls.Add(this.SelectTeamLabel);
             this.AddTeamOnEventGroup.Location = new System.Drawing.Point(585, 238);
             this.AddTeamOnEventGroup.Name = "AddTeamOnEventGroup";
-            this.AddTeamOnEventGroup.Size = new System.Drawing.Size(286, 144);
+            this.AddTeamOnEventGroup.Size = new System.Drawing.Size(258, 144);
             this.AddTeamOnEventGroup.TabIndex = 7;
             this.AddTeamOnEventGroup.TabStop = false;
             this.AddTeamOnEventGroup.Text = "Добавление команды на мероприятие";
+            // 
+            // AddTeamToEvtButton
+            // 
+            this.AddTeamToEvtButton.Location = new System.Drawing.Point(151, 104);
+            this.AddTeamToEvtButton.Name = "AddTeamToEvtButton";
+            this.AddTeamToEvtButton.Size = new System.Drawing.Size(95, 23);
+            this.AddTeamToEvtButton.TabIndex = 15;
+            this.AddTeamToEvtButton.Text = "Добавить";
+            this.AddTeamToEvtButton.UseVisualStyleBackColor = true;
+            this.AddTeamToEvtButton.Click += new System.EventHandler(this.AddTeamToEvtButton_Click);
+            // 
+            // SelectTeamOpt
+            // 
+            this.SelectTeamOpt.FormattingEnabled = true;
+            this.SelectTeamOpt.Location = new System.Drawing.Point(9, 107);
+            this.SelectTeamOpt.Name = "SelectTeamOpt";
+            this.SelectTeamOpt.Size = new System.Drawing.Size(121, 21);
+            this.SelectTeamOpt.TabIndex = 14;
+            // 
+            // SelTeamLab
+            // 
+            this.SelTeamLab.AutoSize = true;
+            this.SelTeamLab.Location = new System.Drawing.Point(6, 83);
+            this.SelTeamLab.Name = "SelTeamLab";
+            this.SelTeamLab.Size = new System.Drawing.Size(103, 13);
+            this.SelTeamLab.TabIndex = 13;
+            this.SelTeamLab.Text = "Выберите команду";
+            // 
+            // SelectEvtOpt
+            // 
+            this.SelectEvtOpt.FormattingEnabled = true;
+            this.SelectEvtOpt.Location = new System.Drawing.Point(9, 47);
+            this.SelectEvtOpt.Name = "SelectEvtOpt";
+            this.SelectEvtOpt.Size = new System.Drawing.Size(121, 21);
+            this.SelectEvtOpt.TabIndex = 12;
+            // 
+            // SelectTeamLabel
+            // 
+            this.SelectTeamLabel.AutoSize = true;
+            this.SelectTeamLabel.Location = new System.Drawing.Point(6, 23);
+            this.SelectTeamLabel.Name = "SelectTeamLabel";
+            this.SelectTeamLabel.Size = new System.Drawing.Size(127, 13);
+            this.SelectTeamLabel.TabIndex = 11;
+            this.SelectTeamLabel.Text = "Выберите мероприятие";
             // 
             // EventCreatingSection
             // 
@@ -399,49 +449,44 @@
             this.LogoutLink.Text = "Выйти";
             this.LogoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
-            // SelectTeamLabel
+            // groupBox1
             // 
-            this.SelectTeamLabel.AutoSize = true;
-            this.SelectTeamLabel.Location = new System.Drawing.Point(6, 23);
-            this.SelectTeamLabel.Name = "SelectTeamLabel";
-            this.SelectTeamLabel.Size = new System.Drawing.Size(127, 13);
-            this.SelectTeamLabel.TabIndex = 11;
-            this.SelectTeamLabel.Text = "Выберите мероприятие";
+            this.groupBox1.Controls.Add(this.DeleteEvtButton);
+            this.groupBox1.Controls.Add(this.SelectDelEvtOpt);
+            this.groupBox1.Controls.Add(this.SelectDelEvtLabel);
+            this.groupBox1.Location = new System.Drawing.Point(849, 238);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(237, 144);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Удаление мероприятия";
             // 
-            // SelectEvtOpt
+            // SelectDelEvtLabel
             // 
-            this.SelectEvtOpt.FormattingEnabled = true;
-            this.SelectEvtOpt.Location = new System.Drawing.Point(9, 47);
-            this.SelectEvtOpt.Name = "SelectEvtOpt";
-            this.SelectEvtOpt.Size = new System.Drawing.Size(121, 21);
-            this.SelectEvtOpt.TabIndex = 12;
+            this.SelectDelEvtLabel.AutoSize = true;
+            this.SelectDelEvtLabel.Location = new System.Drawing.Point(6, 23);
+            this.SelectDelEvtLabel.Name = "SelectDelEvtLabel";
+            this.SelectDelEvtLabel.Size = new System.Drawing.Size(127, 13);
+            this.SelectDelEvtLabel.TabIndex = 0;
+            this.SelectDelEvtLabel.Text = "Выберите мероприятие";
             // 
-            // SelectTeamOpt
+            // SelectDelEvtOpt
             // 
-            this.SelectTeamOpt.FormattingEnabled = true;
-            this.SelectTeamOpt.Location = new System.Drawing.Point(9, 107);
-            this.SelectTeamOpt.Name = "SelectTeamOpt";
-            this.SelectTeamOpt.Size = new System.Drawing.Size(121, 21);
-            this.SelectTeamOpt.TabIndex = 14;
+            this.SelectDelEvtOpt.FormattingEnabled = true;
+            this.SelectDelEvtOpt.Location = new System.Drawing.Point(9, 47);
+            this.SelectDelEvtOpt.Name = "SelectDelEvtOpt";
+            this.SelectDelEvtOpt.Size = new System.Drawing.Size(121, 21);
+            this.SelectDelEvtOpt.TabIndex = 13;
             // 
-            // SelTeamLab
+            // DeleteEvtButton
             // 
-            this.SelTeamLab.AutoSize = true;
-            this.SelTeamLab.Location = new System.Drawing.Point(6, 83);
-            this.SelTeamLab.Name = "SelTeamLab";
-            this.SelTeamLab.Size = new System.Drawing.Size(103, 13);
-            this.SelTeamLab.TabIndex = 13;
-            this.SelTeamLab.Text = "Выберите команду";
-            // 
-            // AddTeamToEvtButton
-            // 
-            this.AddTeamToEvtButton.Location = new System.Drawing.Point(166, 104);
-            this.AddTeamToEvtButton.Name = "AddTeamToEvtButton";
-            this.AddTeamToEvtButton.Size = new System.Drawing.Size(95, 23);
-            this.AddTeamToEvtButton.TabIndex = 15;
-            this.AddTeamToEvtButton.Text = "Создать";
-            this.AddTeamToEvtButton.UseVisualStyleBackColor = true;
-            this.AddTeamToEvtButton.Click += new System.EventHandler(this.AddTeamToEvtButton_Click);
+            this.DeleteEvtButton.Location = new System.Drawing.Point(9, 83);
+            this.DeleteEvtButton.Name = "DeleteEvtButton";
+            this.DeleteEvtButton.Size = new System.Drawing.Size(95, 23);
+            this.DeleteEvtButton.TabIndex = 16;
+            this.DeleteEvtButton.Text = "Удалить";
+            this.DeleteEvtButton.UseVisualStyleBackColor = true;
+            this.DeleteEvtButton.Click += new System.EventHandler(this.DeleteEvtButton_Click);
             // 
             // Manager
             // 
@@ -469,6 +514,8 @@
             this.EventSortingGroup.PerformLayout();
             this.EventsData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NearestEventsData)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,5 +559,9 @@
         private System.Windows.Forms.Label SelTeamLab;
         private System.Windows.Forms.ComboBox SelectEvtOpt;
         private System.Windows.Forms.Label SelectTeamLabel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button DeleteEvtButton;
+        private System.Windows.Forms.ComboBox SelectDelEvtOpt;
+        private System.Windows.Forms.Label SelectDelEvtLabel;
     }
 }

@@ -50,12 +50,40 @@ namespace IntegrationApp
 
         private void DirectSearchButton_Click(object sender, EventArgs e)
         {
-            NearestEventsData.DataSource = Data.DirectEvtDataSearch(SearchByOpt.SelectedItem.ToString(), DirectSearchInput.Text);
+            try
+            {
+                if (DirectSearchInput.Text != "")
+                {
+                    NearestEventsData.DataSource = Data.DirectEvtDataSearch(SearchByOpt.SelectedItem.ToString(), DirectSearchInput.Text);
+                }
+                else
+                {
+                    throw new Exception("Для прямого поиска нужно ввести значение!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void DirectSpSearchButton_Click(object sender, EventArgs e)
         {
-            SpData.DataSource = Data.DirectSpDataSearch(DirectSpSearchOpt.SelectedItem.ToString(), DirectSpSearchInput.Text);
+            try
+            {
+                if (DirectSpSearchInput.Text != "")
+                {
+                    SpData.DataSource = Data.DirectEvtDataSearch(SearchByOpt.SelectedItem.ToString(), DirectSearchInput.Text);
+                }
+                else
+                {
+                    throw new Exception("Для прямого поиска нужно ввести значение!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
