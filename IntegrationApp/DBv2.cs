@@ -26,11 +26,12 @@ namespace IntegrationApp
                 ds = new DataSet();
 
                 if (Params != null)
-                {
+                { 
                     for (int i = 0; i < Params.Count; i++)
                     {
                         comnd.Parameters.AddWithValue($@"@{i}", Params[i]);
                     }
+
                     comnd.ExecuteNonQuery();
                 }
                 else

@@ -136,6 +136,14 @@ namespace IntegrationApp
             return SpID;
         }
 
+        public static int GetEmpIDBySurnameName(string surname, string name)
+        {
+            string GetEmpID = "execute GetEmpIDBySurnameName " + "\'" + surname + "\'" + "," + "\'" + name + "\'";
+            DB.SearchValuesQuery(GetEmpID);
+            int EmpID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
+            return EmpID;
+        }
+
         public static string GetEmpSurnameNameByLogin(string Login)
         {
             string GetData = "execute GetSurnameNameByLogin " + "\'" + Service.AuthorizedUser + "\'";
