@@ -85,5 +85,11 @@ namespace IntegrationApp
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 f1 = new Form1();
+            f1.Show();
+        }
     }
 }

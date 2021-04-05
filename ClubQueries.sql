@@ -243,6 +243,7 @@ values	('1','2'),
 		('5','3')
 go
 
+select ID_Типа_пользователей from Типы_пользователей where Наименование_типа =  'Менеджер'
 
 /*Представления*/
 
@@ -253,6 +254,16 @@ select Логин, Пароль, Типы_пользователей.Наименование_типа
 from Пользователи inner join Типы_пользователей on Пользователи.Тип_пользователя = Типы_пользователей.ID_Типа_пользователей
 go
 
+create view GetEmployeeData
+(Фамилия, Имя, Отчество, Должность)
+as
+	select Фамилия, Имя, Отчество, Типы_пользователей.Наименование_типа
+	from Сотрудники inner join Пользователи on Сотрудники.Данные_для_входа = Пользователи.ID_Пользователя
+					inner join Типы_пользователей on Пользователи.Тип_пользователя = Типы_пользователей.ID_Типа_пользователей
+go
+
+select * from GetEmployeeData
+
 create view GetSportsmanData
 (Фамилия, Имя ,Отчество, Гражданство, Дата_рождения, Рост_см, Вес_кг, Команда)
 as
@@ -260,7 +271,6 @@ select Фамилия, Имя, Отчество, Гражданство, Дата_рождения, Рост_см, Вес_кг, Кома
 from Спортсмены inner join Спортсмены_в_команде on Спортсмены_в_команде.Спортсмен = Спортсмены.ID_Спортсмена
 				inner join Команды on Команды.ID_Команды = Спортсмены_в_команде.Команда
 go
-
 
 create view GetEventsData
 (Название, Тип_мероприятия, Дата_проведения, Время_проведения, Место_проведения, Команда, Статус)
@@ -301,6 +311,15 @@ as
 	end
 go
 
+create procedure GetSportsmanIDByUserlogin
+@userlogin varchar(25), @temp int = 0
+as
+	begin
+		set @temp = (select ID_Пользователя from Пользователи where Логин = @userlogin)
+		select ID_Спортсмена from Спортсмены where Данные_для_входа = @temp
+	end
+go
+
 create procedure AddNewSportsman
 @surname varchar(25), @name varchar(25), @lastName varchar(25), @citizen varchar(25), @birthdate date, @weight int, @height int, @authData int
 as
@@ -317,6 +336,24 @@ as
 			end
 	end
 go
+
+create procedure AddNewEmployee
+@surname varchar(25), @name varchar(25), @lastName varchar(25), @authData int
+as
+	begin
+		if exists (select Фамилия, Имя from Сотрудники where Фамилия = @surname and Имя = @name)
+			begin
+				rollback tran
+				raiserror('Сотрудник с такими фамилией и именем уже существует!',0,1)
+			end
+		else
+			begin
+				insert into Сотрудники(Фамилия, Имя, Отчество, Данные_для_входа)
+				values	(@surname, @name, @lastName, @authData)
+			end
+	end
+go
+
 
 create procedure GetEmpIDByAuthUser
 @userlogin varchar(25)

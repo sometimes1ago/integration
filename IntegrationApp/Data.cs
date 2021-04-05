@@ -38,6 +38,19 @@ namespace IntegrationApp
             return DB.SearchValuesQuery(DirectSearchQuery);
         }
 
+        public static object DirectSpEvtDataSearch(string SearchBy, string SearchValue)
+        {
+            int SpID = GetSportsmanIDByUserlogin(Service.AuthorizedUser);
+
+            string GetTeamName = "select Команды.Наименование from Спортсмены_в_команде inner join Команды on Спортсмены_в_команде.Команда=Команды.ID_Команды where Спортсмен = " + "\'" + SpID + "\'";
+            DB.SearchValuesQuery(GetTeamName);
+            string TeamName = DB.ds.Tables[0].Rows[0][0].ToString();
+
+            string DirectSearchQuery = "select * from GetEventsData where Команда = " + "\'" + TeamName + "\'" + Service.GetSortByParameter(SearchBy) +
+                " = " + "\'" + SearchValue + "\'";
+            return DB.SearchValuesQuery(DirectSearchQuery);
+        }
+
         /// <summary>
         /// Метод, получающий данные спортсменов, согласно параметру сортировки и упорядочивания
         /// </summary>
@@ -51,6 +64,13 @@ namespace IntegrationApp
             return DB.SearchValuesQuery(GetSportsmenData);
         }
 
+        public static object GetAuthSpData(string Userlogin)
+        {
+            int SpID = GetSportsmanIDByUserlogin(Service.AuthorizedUser);
+            string GetSportsmenData = "select Фамилия, Имя, Отчество, Гражданство, Дата_рождения, Рост_см, Вес_кг from Спортсмены where ID_Спортсмена = " + "\'" + SpID + "\'";
+            return DB.SearchValuesQuery(GetSportsmenData);
+        }
+
 
         /// <summary>
         /// Метод, получающий данные о мероприятиях, согласно параметру сортировки и упорядочивания
@@ -61,6 +81,25 @@ namespace IntegrationApp
         public static object GetEvtData(string SortBy, string OrderBy)
         {
             string GetEventsData = "select * from GetEventsData order by " + Service.GetSortByParameter(SortBy) +
+                " " + Service.GetOrderParameter(OrderBy);
+            return DB.SearchValuesQuery(GetEventsData);
+        }
+
+        /// <summary>
+        /// Метод, получающий данные о мероприятиях, согласно параметру сортировки и упорядочивания для конкретного спортсмена
+        /// </summary>
+        /// <param name="SortBy">Сортировочный параметр</param>
+        /// <param name="OrderBy">Сортировочный параметр</param>
+        /// <returns></returns>
+        public static object GetSpEvtData(string Userlogin, string SortBy, string OrderBy)
+        {
+            int SpID = GetSportsmanIDByUserlogin(Service.AuthorizedUser);
+
+            string GetTeamName = "select Команды.Наименование from Спортсмены_в_команде inner join Команды on Спортсмены_в_команде.Команда=Команды.ID_Команды where Спортсмен = " + "\'" + SpID + "\'";
+            DB.SearchValuesQuery(GetTeamName);
+            string TeamName = DB.ds.Tables[0].Rows[0][0].ToString();
+
+            string GetEventsData = "select * from GetEventsData where Команда = " + "\'" + TeamName + "\'" + " order by " + Service.GetSortByParameter(SortBy) +
                 " " + Service.GetOrderParameter(OrderBy);
             return DB.SearchValuesQuery(GetEventsData);
         }
@@ -87,6 +126,14 @@ namespace IntegrationApp
             DB.SearchValuesQuery(GetIDQuery);
             int EmpID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
             return EmpID;
+        }
+
+        public static int GetSportsmanIDByUserlogin(string Userlogin)
+        {
+            string GetIDQuery = "execute GetSportsmanIDByUserlogin " + "\'" + Userlogin + "\'";
+            DB.SearchValuesQuery(GetIDQuery);
+            int SpID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
+            return SpID;
         }
 
         public static string GetEmpSurnameNameByLogin(string Login)
