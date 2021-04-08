@@ -1,6 +1,6 @@
 ﻿namespace IntegrationApp
 {
-    partial class Form1
+    partial class TestDBv2
     {
         /// <summary>
         /// Required designer variable.
@@ -76,7 +76,7 @@
             // 
             this.GuestControls.Controls.Add(this.Events);
             this.GuestControls.Controls.Add(this.Sportmen);
-            this.GuestControls.Location = new System.Drawing.Point(40, 29);
+            this.GuestControls.Location = new System.Drawing.Point(12, 12);
             this.GuestControls.Name = "GuestControls";
             this.GuestControls.SelectedIndex = 0;
             this.GuestControls.Size = new System.Drawing.Size(686, 419);
@@ -238,7 +238,7 @@
             this.NearestEventsData.AllowUserToAddRows = false;
             this.NearestEventsData.AllowUserToDeleteRows = false;
             this.NearestEventsData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.NearestEventsData.Location = new System.Drawing.Point(6, 19);
+            this.NearestEventsData.Location = new System.Drawing.Point(-10, 25);
             this.NearestEventsData.Name = "NearestEventsData";
             this.NearestEventsData.ReadOnly = true;
             this.NearestEventsData.Size = new System.Drawing.Size(649, 201);
@@ -410,15 +410,15 @@
             this.SpData.Size = new System.Drawing.Size(772, 225);
             this.SpData.TabIndex = 0;
             // 
-            // Form1
+            // TestDBv2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.GuestControls);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "TestDBv2";
+            this.Text = "TestDBv2";
+            this.Load += new System.EventHandler(this.TestDBv2_Load);
             this.GuestControls.ResumeLayout(false);
             this.Events.ResumeLayout(false);
             this.DirectSearchGroup.ResumeLayout(false);

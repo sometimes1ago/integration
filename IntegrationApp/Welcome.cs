@@ -86,10 +86,15 @@ namespace IntegrationApp
             }
         }
 
+        private void WelcomeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form1 f1 = new Form1();
-            f1.Show();
+            TestDBv2 test = new TestDBv2();
+            test.Show();
         }
     }
 }

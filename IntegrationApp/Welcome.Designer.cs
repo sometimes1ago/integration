@@ -61,6 +61,7 @@
             this.SortSpLabel = new System.Windows.Forms.Label();
             this.SportsmenDataGroup = new System.Windows.Forms.GroupBox();
             this.SpData = new System.Windows.Forms.DataGridView();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.GuestControls.SuspendLayout();
             this.Events.SuspendLayout();
             this.DirectSearchGroup.SuspendLayout();
@@ -83,6 +84,7 @@
             this.WelcomeLabel.TabIndex = 0;
             this.WelcomeLabel.Text = "Добро пожаловать в спортивный клуб \"Олимпиец\"";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.WelcomeLabel.Click += new System.EventHandler(this.WelcomeLabel_Click);
             // 
             // ToAuthLink
             // 
@@ -438,11 +440,23 @@
             this.SpData.Size = new System.Drawing.Size(772, 225);
             this.SpData.TabIndex = 0;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(13, 62);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 548);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.GuestControls);
             this.Controls.Add(this.ToAuthLink);
             this.Controls.Add(this.WelcomeLabel);
@@ -507,6 +521,7 @@
         private System.Windows.Forms.Label SortSpLabel;
         private System.Windows.Forms.DataGridView SpData;
         private System.Windows.Forms.Button ShowEventsButton;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

@@ -24,6 +24,7 @@ namespace IntegrationApp
                 comnd = new SqlCommand(QueryString, sqlconn);
                 sqlad = new SqlDataAdapter(QueryString, ConnStr);
                 ds = new DataSet();
+                
 
                 if (Params != null)
                 { 

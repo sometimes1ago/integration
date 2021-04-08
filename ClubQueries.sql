@@ -243,6 +243,8 @@ from Команды_на_мероприятии inner join Команды on Команды_на_мероприятии.Команда
 							inner join Виды_спорта on Команды.Вид_спорта = Виды_спорта.ID_Вида_спорта
 go
 
+select Мероприятия.Наименование, Статус from Мероприятия where Наименование = @1
+
 /*Процедуры*/
 
 create procedure GetAuthUserData
@@ -255,6 +257,38 @@ as
 		where Пользователи.Логин = @userlogin
 	end
 go
+
+create procedure TestDBv2
+@sortby varchar(25), @orderby varchar(4)
+as
+	select * from GetEventsData
+	order by case when @sortby = 'Название' and @orderby = 'ASC' then Название end ASC,
+				case when @sortby = 'Название' and @orderby = 'DESC' then Название end DESC,
+				case when @sortby = 'Тип_мероприятия' and @orderby = 'ASC' then Тип_мероприятия end ASC,
+				case when @sortby = 'Тип_мероприятия' and @orderby = 'DESC' then Тип_мероприятия end DESC,
+				case when @sortby = 'Дата_проведения' and @orderby = 'ASC' then Дата_проведения end ASC,
+				case when @sortby = 'Дата_проведения' and @orderby = 'DESC' then Дата_проведения end DESC,
+				case when @sortby = 'Время_проведения' and @orderby = 'ASC' then Время_проведения end ASC,
+				case when @sortby = 'Время_проведения' and @orderby = 'DESC' then Время_проведения end DESC,
+				case when @sortby = 'Место_проведения' and @orderby = 'ASC' then Место_проведения end ASC,
+				case when @sortby = 'Место_проведения' and @orderby = 'DESC' then Место_проведения end DESC,
+				case when @sortby = 'Команда' and @orderby = 'ASC' then Команда end ASC,
+				case when @sortby = 'Команда' and @orderby = 'DESC' then Команда end DESC
+go
+
+create procedure TestDBv
+@sortby varchar(25)
+as
+	select * from GetEventsData
+	order by case when @sortby = 'Название' then Название end ASC,
+				case when @sortby = 'Тип_мероприятия' then Тип_мероприятия end ASC,
+				case when @sortby = 'Дата_проведения'  then Дата_проведения end ASC,
+				case when @sortby = 'Время_проведения' then Время_проведения end ASC,
+				case when @sortby = 'Место_проведения' then Место_проведения end ASC,
+				case when @sortby = 'Команда'  then Команда end ASC
+go
+
+execute TestDBv2 'Место_проведения','ASC'
 
 create procedure CreateNewUser
 @login varchar(25), @password varchar(25), @userType int

@@ -10,26 +10,34 @@ using System.Windows.Forms;
 
 namespace IntegrationApp
 {
-    public partial class Form1 : Form
+    public partial class TestDBv2 : Form
     {
-        public Form1()
+        public TestDBv2()
         {
             InitializeComponent();
         }
 
-        public static object GetSpData()
+        private object GetEvtData()
         {
-            string GetSportsmenData = "select * from GetSportsmanData";
-            return DBv2.ReturnableQuery(GetSportsmenData, null);
+            string Query = "select * from GetEventsData where Название = @0";
+            string Name = "Тестовое";
+
+            List<string> Params = new List<string>()
+            {
+                Name
+            };
+
+            return DBv2.ReturnableQuery(Query, Params);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void TestDBv2_Load(object sender, EventArgs e)
         {
             SortSpByOpt.SelectedItem = "Фамилии";
             OrderSpByOpt.SelectedItem = "Убыванию";
             SortEvtOpt.SelectedItem = "Названию";
             OrderEvtOpt.SelectedItem = "Убыванию";
-            NearestEventsData.DataSource = GetSpData();
+            NearestEventsData.DataSource = GetEvtData();
+
         }
     }
 }

@@ -61,12 +61,6 @@
     <Compile Include="Data.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="DBv2.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Manager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +72,12 @@
     </Compile>
     <Compile Include="Sportsman.Designer.cs">
       <DependentUpon>Sportsman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestDBv2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestDBv2.Designer.cs">
+      <DependentUpon>TestDBv2.cs</DependentUpon>
     </Compile>
     <Compile Include="Trainer.cs">
       <SubType>Form</SubType>
@@ -100,14 +100,14 @@
     <EmbeddedResource Include="Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Manager.resx">
       <DependentUpon>Manager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sportsman.resx">
       <DependentUpon>Sportsman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestDBv2.resx">
+      <DependentUpon>TestDBv2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trainer.resx">
       <DependentUpon>Trainer.cs</DependentUpon>
