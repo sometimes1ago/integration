@@ -243,6 +243,8 @@ from Команды_на_мероприятии inner join Команды on Команды_на_мероприятии.Команда
 							inner join Виды_спорта on Команды.Вид_спорта = Виды_спорта.ID_Вида_спорта
 go
 
+select * from GetEventsData where Название = 'Гранд'
+
 select Мероприятия.Наименование, Статус from Мероприятия where Наименование = @1
 
 /*Процедуры*/
@@ -274,6 +276,9 @@ as
 				case when @sortby = 'Место_проведения' and @orderby = 'DESC' then Место_проведения end DESC,
 				case when @sortby = 'Команда' and @orderby = 'ASC' then Команда end ASC,
 				case when @sortby = 'Команда' and @orderby = 'DESC' then Команда end DESC
+go
+
+execute TestDBv2 'Название', 'ASC'
 go
 
 create procedure TestDBv

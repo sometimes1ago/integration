@@ -17,17 +17,17 @@ namespace IntegrationApp
             InitializeComponent();
         }
 
-        private object GetEvtData()
+        private object GetEvtData(string SortBy, string OrderBy)
         {
-            string Query = "select * from GetEventsData where Название = @0";
-            string Name = "Тестовое";
+            string Query = "execute TestDBv2 @0, @1";
 
             List<string> Params = new List<string>()
             {
-                Name
+                Service.GetSortByParameter(SortBy),
+                Service.GetOrderParameter(OrderBy)
             };
 
-            return DBv2.ReturnableQuery(Query, Params);
+            return DBv2.QuerySelect(Query, Params);
         }
 
         private void TestDBv2_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace IntegrationApp
             OrderSpByOpt.SelectedItem = "Убыванию";
             SortEvtOpt.SelectedItem = "Названию";
             OrderEvtOpt.SelectedItem = "Убыванию";
-            NearestEventsData.DataSource = GetEvtData();
+            NearestEventsData.DataSource = GetEvtData(SortEvtOpt.SelectedItem.ToString(), OrderEvtOpt.SelectedItem.ToString());
 
         }
     }
