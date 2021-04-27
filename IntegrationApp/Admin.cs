@@ -47,7 +47,14 @@ namespace IntegrationApp
                         if (EmpPassInput.Text == EmpPassConfirmInput.Text)
                         {
                             int UserTypeID = GetPositionIDByName(EmpPositionsOpt.SelectedItem.ToString());
-                            Service.CreateNewUser(EmpLoginInput.Text, EmpPassInput.Text, UserTypeID);
+
+                            string CreateUser = "insert into Пользователи(Логин, Пароль, Тип_пользователя) values(@0, @1, @2)";
+                            List<string> Params = new List<string>()
+                            {
+                                EmpLoginInput.Text, EmpPassInput.Text, Convert.ToString(UserTypeID)
+                            };
+                            DBv2.Execute(CreateUser, Params);
+
                             int NewUserID = Service.GetNewUserID(EmpLoginInput.Text);
 
                             string AddNewEmployee = "execute AddNewEmployee" + "\'" + EmpSurnameInput.Text + "\'" + "," + "\'" + EmpNameInput.Text + "\'" +
@@ -176,6 +183,16 @@ namespace IntegrationApp
                     DB.SearchValuesQuery(GetUserID);
                     int UserID = Convert.ToInt32(DB.ds.Tables[0].Rows[0][0].ToString());
 
+                    string GetUserType = "select Тип_пользователя from Пользователи where ID_Пользователя = " + "\'" + UserID + "\'";
+                    DB.SearchValuesQuery(GetUserType);
+                    string UserType = DB.ds.Tables[0].Rows[0][0].ToString();
+
+                    if (UserType == "Тренер")
+                    {
+                        string DropFromTeam = "delete from Команда where Тренер = " + "\'" + EmpID + "\'";
+                        DB.Execute(DropFromTeam);
+                    }
+
                     string DropEmp = "delete from Сотрудники where ID_Сотрудника = " + "\'" + EmpID + "\'";
                     DB.Execute(DropEmp);
 
@@ -183,6 +200,8 @@ namespace IntegrationApp
                     DB.Execute(DropUser);
 
                     MessageBox.Show("Сотрудник успешно удален!");
+                    DropableEmpOpt.Items.Clear();
+                    FillEmpList();
                     ChangableEmpData.DataSource = GetEmployeeData();
                 }
                 else

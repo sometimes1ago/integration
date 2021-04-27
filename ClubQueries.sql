@@ -366,6 +366,8 @@ as
 go
 
 
+select ID_Типа_пользователей from Типы_пользователей where Наименование_типа = 'Тренер'
+
 create procedure GetEmpIDByAuthUser
 @userlogin varchar(25)
 as

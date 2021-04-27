@@ -79,6 +79,10 @@
             this.EmpDataGroup = new System.Windows.Forms.GroupBox();
             this.EmpData = new System.Windows.Forms.DataGridView();
             this.DataRemovingAndChanging = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DropableEmpOpt = new System.Windows.Forms.ComboBox();
+            this.DropableEmpLabel = new System.Windows.Forms.Label();
+            this.DropEmpButton = new System.Windows.Forms.Button();
             this.ChangeDataGroup = new System.Windows.Forms.GroupBox();
             this.EmpOpt = new System.Windows.Forms.ComboBox();
             this.SelectEmpLabel = new System.Windows.Forms.Label();
@@ -91,10 +95,6 @@
             this.ChangableEmpData = new System.Windows.Forms.DataGridView();
             this.GreetingsLabel = new System.Windows.Forms.Label();
             this.LogoutLink = new System.Windows.Forms.LinkLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.DropableEmpOpt = new System.Windows.Forms.ComboBox();
-            this.DropableEmpLabel = new System.Windows.Forms.Label();
-            this.DropEmpButton = new System.Windows.Forms.Button();
             this.GuestControls.SuspendLayout();
             this.Events.SuspendLayout();
             this.DirectSearchGroup.SuspendLayout();
@@ -111,10 +111,10 @@
             this.EmpDataGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmpData)).BeginInit();
             this.DataRemovingAndChanging.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.ChangeDataGroup.SuspendLayout();
             this.ChangableEmpGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChangableEmpData)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GuestControls
@@ -528,8 +528,8 @@
             this.EmpPositionsOpt.FormattingEnabled = true;
             this.EmpPositionsOpt.Items.AddRange(new object[] {
             "Тренер",
-            "Администратор",
-            "Менеджер"});
+            "Менеджер",
+            "Администратор"});
             this.EmpPositionsOpt.Location = new System.Drawing.Point(147, 107);
             this.EmpPositionsOpt.Name = "EmpPositionsOpt";
             this.EmpPositionsOpt.Size = new System.Drawing.Size(100, 21);
@@ -653,6 +653,45 @@
             this.DataRemovingAndChanging.Text = "Удаление и изменение данных сотрудника";
             this.DataRemovingAndChanging.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.DropableEmpOpt);
+            this.groupBox1.Controls.Add(this.DropableEmpLabel);
+            this.groupBox1.Controls.Add(this.DropEmpButton);
+            this.groupBox1.Location = new System.Drawing.Point(325, 241);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(168, 163);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Удаление сотрудников";
+            // 
+            // DropableEmpOpt
+            // 
+            this.DropableEmpOpt.FormattingEnabled = true;
+            this.DropableEmpOpt.Location = new System.Drawing.Point(9, 52);
+            this.DropableEmpOpt.Name = "DropableEmpOpt";
+            this.DropableEmpOpt.Size = new System.Drawing.Size(129, 21);
+            this.DropableEmpOpt.TabIndex = 6;
+            // 
+            // DropableEmpLabel
+            // 
+            this.DropableEmpLabel.AutoSize = true;
+            this.DropableEmpLabel.Location = new System.Drawing.Point(6, 31);
+            this.DropableEmpLabel.Name = "DropableEmpLabel";
+            this.DropableEmpLabel.Size = new System.Drawing.Size(118, 13);
+            this.DropableEmpLabel.TabIndex = 5;
+            this.DropableEmpLabel.Text = "Выберите сотрудника";
+            // 
+            // DropEmpButton
+            // 
+            this.DropEmpButton.Location = new System.Drawing.Point(6, 91);
+            this.DropEmpButton.Name = "DropEmpButton";
+            this.DropEmpButton.Size = new System.Drawing.Size(75, 23);
+            this.DropEmpButton.TabIndex = 4;
+            this.DropEmpButton.Text = "Удалить";
+            this.DropEmpButton.UseVisualStyleBackColor = true;
+            this.DropEmpButton.Click += new System.EventHandler(this.DropEmpButton_Click);
+            // 
             // ChangeDataGroup
             // 
             this.ChangeDataGroup.Controls.Add(this.EmpOpt);
@@ -710,7 +749,7 @@
             this.ChangeValue.Name = "ChangeValue";
             this.ChangeValue.Size = new System.Drawing.Size(92, 13);
             this.ChangeValue.TabIndex = 2;
-            this.ChangeValue.Text = "На что поменять"; 
+            this.ChangeValue.Text = "На что поменять";
             // 
             // ToChangeOpt
             // 
@@ -775,45 +814,6 @@
             this.LogoutLink.Text = "Выйти";
             this.LogoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.DropableEmpOpt);
-            this.groupBox1.Controls.Add(this.DropableEmpLabel);
-            this.groupBox1.Controls.Add(this.DropEmpButton);
-            this.groupBox1.Location = new System.Drawing.Point(325, 241);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(168, 163);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Удаление сотрудников";
-            // 
-            // DropableEmpOpt
-            // 
-            this.DropableEmpOpt.FormattingEnabled = true;
-            this.DropableEmpOpt.Location = new System.Drawing.Point(9, 52);
-            this.DropableEmpOpt.Name = "DropableEmpOpt";
-            this.DropableEmpOpt.Size = new System.Drawing.Size(129, 21);
-            this.DropableEmpOpt.TabIndex = 6;
-            // 
-            // DropableEmpLabel
-            // 
-            this.DropableEmpLabel.AutoSize = true;
-            this.DropableEmpLabel.Location = new System.Drawing.Point(6, 31);
-            this.DropableEmpLabel.Name = "DropableEmpLabel";
-            this.DropableEmpLabel.Size = new System.Drawing.Size(118, 13);
-            this.DropableEmpLabel.TabIndex = 5;
-            this.DropableEmpLabel.Text = "Выберите сотрудника";
-            // 
-            // DropEmpButton
-            // 
-            this.DropEmpButton.Location = new System.Drawing.Point(6, 91);
-            this.DropEmpButton.Name = "DropEmpButton";
-            this.DropEmpButton.Size = new System.Drawing.Size(75, 23);
-            this.DropEmpButton.TabIndex = 4;
-            this.DropEmpButton.Text = "Удалить";
-            this.DropEmpButton.UseVisualStyleBackColor = true;
-            this.DropEmpButton.Click += new System.EventHandler(this.DropEmpButton_Click);
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -850,12 +850,12 @@
             this.EmpDataGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EmpData)).EndInit();
             this.DataRemovingAndChanging.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ChangeDataGroup.ResumeLayout(false);
             this.ChangeDataGroup.PerformLayout();
             this.ChangableEmpGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ChangableEmpData)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

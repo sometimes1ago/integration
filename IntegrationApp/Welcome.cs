@@ -90,11 +90,5 @@ namespace IntegrationApp
         {
 
         }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            TestDBv2 test = new TestDBv2();
-            test.Show();
-        }
     }
 }

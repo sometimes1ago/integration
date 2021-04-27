@@ -73,12 +73,6 @@
     <Compile Include="Sportsman.Designer.cs">
       <DependentUpon>Sportsman.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestDBv2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestDBv2.Designer.cs">
-      <DependentUpon>TestDBv2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Trainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,9 +99,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sportsman.resx">
       <DependentUpon>Sportsman.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TestDBv2.resx">
-      <DependentUpon>TestDBv2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trainer.resx">
       <DependentUpon>Trainer.cs</DependentUpon>
